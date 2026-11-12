@@ -189,6 +189,9 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 .svc > :not(.svc-thumb) { grid-column: 2; }
 @media (min-width: 900px) { .svc { grid-template-columns: 120px minmax(0, 0.9fr) minmax(0, 1.4fr) auto; } .svc-thumb { grid-row: auto; width: 120px; height: 88px; align-self: center; } .svc > :not(.svc-thumb) { grid-column: auto; } }
 
+.tel { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.tel:hover { color: var(--orange); }
+
 /* Fotos */
 .f-photo { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); background: var(--night-2); }
 .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -392,7 +395,7 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
         <h2>Diagnóstico de Especie</h2>
         <ul><li>Identificación de la especie exacta</li><li>Nivel de infestación y extensión del daño</li><li>Tratamiento específico para esa especie</li><li>Informe técnico y certificado</li></ul>
         <a class="btn btn-orange" href="https://wa.me/56936678897?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20termitas%20y%20quiero%20un%20diagn%C3%B3stico.%20Esto%20es%20lo%20que%20encontr%C3%A9%3A" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir mi diagnóstico</a>
-        <small>Respondemos por WhatsApp · +56 9 3667 8897</small>
+        <small>Respondemos por WhatsApp · <a class="tel" href="tel:+56936678897">+56 9 3667 8897</a></small>
       </aside>
     </div>
   </section>
@@ -482,7 +485,7 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
       <p class="eyebrow">Diagnóstico de Especie</p>
       <h2 id="c-h">Mándanos una foto de lo que viste. <em>Te decimos si son termitas.</em></h2>
       <a class="btn btn-wa btn-big" href="https://wa.me/56936678897?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20termitas%20y%20quiero%20un%20diagn%C3%B3stico.%20Esto%20es%20lo%20que%20encontr%C3%A9%3A" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir mi diagnóstico</a>
-      <p class="lines">WhatsApp y teléfono <b>+56 9 3667 8897</b><br>Correo <b>ventas@aycmip.cl</b><br>Atendemos las 7 provincias continentales de la Región de Valparaíso</p>
+      <p class="lines">WhatsApp y teléfono <b><a class="tel" href="tel:+56936678897">+56 9 3667 8897</a></b><br>Correo <b>ventas@aycmip.cl</b><br>Atendemos las 7 provincias continentales de la Región de Valparaíso</p>
     </div>
   </section>
 </main>

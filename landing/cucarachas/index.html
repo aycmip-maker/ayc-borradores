@@ -189,6 +189,9 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 .svc > :not(.svc-thumb) { grid-column: 2; }
 @media (min-width: 900px) { .svc { grid-template-columns: 120px minmax(0, 0.9fr) minmax(0, 1.4fr) auto; } .svc-thumb { grid-row: auto; width: 120px; height: 88px; align-self: center; } .svc > :not(.svc-thumb) { grid-column: auto; } }
 
+.tel { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.tel:hover { color: var(--orange); }
+
 /* Fotos */
 .f-photo { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); background: var(--night-2); }
 .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -392,7 +395,7 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
         <h2>Plan Colonia Completa</h2>
         <ul><li>Diagnóstico gratis antes de cotizar</li><li>Tratamiento con gel no repelente en una sesión</li><li>Certificado SEREMI</li><li>Garantía de 14 días</li></ul>
         <a class="btn btn-orange" href="https://wa.me/56936678897?text=Hola%2C%20vi%20la%20oferta%20de%20cucarachas%20y%20quiero%20mi%20diagn%C3%B3stico%20gratis." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero mi diagnóstico gratis</a>
-        <small>Respondemos por WhatsApp · +56 9 3667 8897</small>
+        <small>Respondemos por WhatsApp · <a class="tel" href="tel:+56936678897">+56 9 3667 8897</a></small>
       </aside>
     </div>
   </section>
@@ -482,7 +485,7 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
       <p class="eyebrow">Plan Colonia Completa</p>
       <h2 id="c-h">Mándanos una foto. <em>Hoy mismo te decimos qué es.</em></h2>
       <a class="btn btn-wa btn-big" href="https://wa.me/56936678897?text=Hola%2C%20vi%20la%20oferta%20de%20cucarachas%20y%20quiero%20mi%20diagn%C3%B3stico%20gratis." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero mi diagnóstico gratis</a>
-      <p class="lines">WhatsApp y teléfono <b>+56 9 3667 8897</b><br>Correo <b>ventas@aycmip.cl</b><br>Atendemos las 7 provincias continentales de la Región de Valparaíso</p>
+      <p class="lines">WhatsApp y teléfono <b><a class="tel" href="tel:+56936678897">+56 9 3667 8897</a></b><br>Correo <b>ventas@aycmip.cl</b><br>Atendemos las 7 provincias continentales de la Región de Valparaíso</p>
     </div>
   </section>
 </main>

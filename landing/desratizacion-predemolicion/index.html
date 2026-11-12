@@ -189,6 +189,9 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 .svc > :not(.svc-thumb) { grid-column: 2; }
 @media (min-width: 900px) { .svc { grid-template-columns: 120px minmax(0, 0.9fr) minmax(0, 1.4fr) auto; } .svc-thumb { grid-row: auto; width: 120px; height: 88px; align-self: center; } .svc > :not(.svc-thumb) { grid-column: auto; } }
 
+.tel { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.tel:hover { color: var(--orange); }
+
 /* Fotos */
 .f-photo { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); background: var(--night-2); }
 .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -392,7 +395,7 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
         <h2>Certificado a Tiempo</h2>
         <ul><li>Inspección diagnóstica del inmueble</li><li>Estaciones de cebado en recintos y perímetro</li><li>Dos monitoreos con reporte técnico</li><li>Certificado tramitado en SEREMI en línea</li></ul>
         <a class="btn btn-orange" href="https://wa.me/56936678897?text=Hola%2C%20necesito%20el%20certificado%20de%20desratizaci%C3%B3n%20para%20una%20demolici%C3%B3n.%20Les%20cuento%20del%20inmueble%3A" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar mi predemolición</a>
-        <small>Respondemos por WhatsApp · +56 9 3667 8897</small>
+        <small>Respondemos por WhatsApp · <a class="tel" href="tel:+56936678897">+56 9 3667 8897</a></small>
       </aside>
     </div>
   </section>
@@ -482,7 +485,7 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
       <p class="eyebrow">Certificado a Tiempo</p>
       <h2 id="c-h">Cuéntanos del inmueble. <em>Te decimos cuándo tendrías el certificado.</em></h2>
       <a class="btn btn-wa btn-big" href="https://wa.me/56936678897?text=Hola%2C%20necesito%20el%20certificado%20de%20desratizaci%C3%B3n%20para%20una%20demolici%C3%B3n.%20Les%20cuento%20del%20inmueble%3A" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar mi predemolición</a>
-      <p class="lines">WhatsApp y teléfono <b>+56 9 3667 8897</b><br>Correo <b>ventas@aycmip.cl</b><br>Atendemos las 7 provincias continentales de la Región de Valparaíso</p>
+      <p class="lines">WhatsApp y teléfono <b><a class="tel" href="tel:+56936678897">+56 9 3667 8897</a></b><br>Correo <b>ventas@aycmip.cl</b><br>Atendemos las 7 provincias continentales de la Región de Valparaíso</p>
     </div>
   </section>
 </main>

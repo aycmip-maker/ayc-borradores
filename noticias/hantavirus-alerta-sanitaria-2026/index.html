@@ -189,6 +189,9 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 .svc > :not(.svc-thumb) { grid-column: 2; }
 @media (min-width: 900px) { .svc { grid-template-columns: 120px minmax(0, 0.9fr) minmax(0, 1.4fr) auto; } .svc-thumb { grid-row: auto; width: 120px; height: 88px; align-self: center; } .svc > :not(.svc-thumb) { grid-column: auto; } }
 
+.tel { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.tel:hover { color: var(--orange); }
+
 /* Fotos */
 .f-photo { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); background: var(--night-2); }
 .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
