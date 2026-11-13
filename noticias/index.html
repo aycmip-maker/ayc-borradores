@@ -18,7 +18,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Noticias A&C","url":"https://www.aycmip.cl/noticias/","publisher":{"@type":"Organization","@id":"https://www.aycmip.cl/#empresa","name":"A&C Soluciones Agrícolas y Urbanas","url":"https://www.aycmip.cl/","logo":"https://www.aycmip.cl/img/logo-ayc.png"},"blogPost":[{"@type":"BlogPosting","headline":"Alerta sanitaria por hantavirus: los contagios no subieron, la letalidad sí","datePublished":"2026-11-11","url":"https://www.aycmip.cl/noticias/hantavirus-alerta-sanitaria-2026/"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
 <style>
 /* Concepto: "lo que ves no es toda la población". La noche (donde vive la plaga) y el día (donde vive el cliente) se alternan:
    bandas nocturnas con linterna y datos de especie, bandas claras para servicios y contacto. Un solo look, deliberado. */
@@ -341,6 +341,127 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 .lx-read { left: 14px; right: 14px; bottom: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.2rem 1.25rem; font-size: 0.72rem; letter-spacing: 0.06em; color: #aab5a7; }
 .lx-read b { color: #f26b0f; font-weight: 600; font-variant-numeric: tabular-nums; }
 .lx-seen { font-size: 0.66rem; letter-spacing: 0.08em; color: #eef2ea; background: #141914; padding: 2px 8px; border: 1px solid rgba(238, 242, 234, 0.18); border-radius: 4px; transform: translate(14px, -50%); white-space: nowrap; }
+
+/* ── Tema B: corporativo claro ── */
+:root {
+  --night: #edf3ea; --night-2: #dfe9db; --paper: #ffffff; --white: #ffffff;
+  --ink: #151a15; --muted: #5d665c;
+  --orange: #dd6800; --orange-deep: #a34c00; --green: #436e36; --green-soft: #dfe9db;
+  --line: rgba(21, 26, 21, 0.13); --on-night: #151a15; --on-night-muted: #5d665c; --line-night: rgba(21, 26, 21, 0.14);
+  --tb-bg: #f7f5f0; --tb-peach: #fbf0e4; --tb-peach-2: #f5e0c9; --tb-black: #0b0d0b;
+  --display: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --r: 12px;
+}
+html { scroll-padding-top: 100px; }
+body { background: var(--white); font-size: 1rem; line-height: 1.6; }
+body::before { background: var(--tb-bg); }
+
+/* Tipografía fina y grande */
+h2, .o-main, .h1-main, .art-head h1, .contact h2, .o-final h2, .gar-copy h2, .urg h2 { font-weight: 300; letter-spacing: -0.04em; line-height: 1.08; }
+.o-main, .h1-main, .art-head h1 { letter-spacing: -0.05em; line-height: 1.03; }
+.o-main em, .h1-main em, .contact h2 em, .o-final h2 em, .urg h2 em { color: var(--ink); font-weight: 400; }
+.eyebrow, .night .eyebrow, .o-card .eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; color: var(--green); }
+h3, .svc h3, .steps h3, .vs-col h3, .who-col h3, .ficha h3, .o-card h2, .lx-copy h2, .lx-copy h3 { font-weight: 500; letter-spacing: -0.03em; }
+.o-card h2 { font-weight: 400; }
+.cost b, .gar-num, .stat b, .fig b, .moments li::before { font-weight: 300; letter-spacing: -0.05em; }
+.cost b span, .gar-num small, .stat span, .fig small, .vs-tag, .targets, .steps li::before, .stack i, .zones dt, .eq dt, .byline, .hero-creds, .field-tag, .readout, .ficha-top, .ficha dt, .sign small, .chart-title, .axis, .data small, .copy, .quotes figcaption, .o-quote figcaption, .o-team figcaption, .art-fig figcaption, .news-item .meta, .o-card small, .o-final .lines, .lx-copy .lx-hint { font-weight: 600; }
+.stack-total p, .cal-end, .pull { font-weight: 400; letter-spacing: -0.03em; }
+.eq dd { font-weight: 400; }
+p, li { letter-spacing: -0.005em; }
+
+/* Botones */
+.btn { border-radius: 8px; min-height: 48px; font-size: 0.95rem; }
+.btn-big { min-height: 56px; font-size: 1.02rem; }
+.btn-wa { background: var(--green); color: #ffffff; }
+.btn-wa:hover { background: #365a2b; }
+.btn-orange { background: var(--orange); color: var(--ink); }
+.btn-orange:hover { background: #f07a12; }
+.btn-ghost { background: #ffffff; border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* Menú flotante en píldora */
+.nav { background: transparent; border-bottom: 0; top: calc(env(safe-area-inset-top, 0px) + 12px); margin-top: 12px; }
+.nav-in { background: #ffffff; border-radius: 12px; box-shadow: 0 6px 24px rgba(21, 26, 21, 0.10); height: auto; min-height: 62px; width: calc(100% - 32px); max-width: 1176px; padding: 0.5rem 0.6rem 0.5rem 1.1rem; }
+.nav-logo img { height: 40px; width: auto; }
+@media (min-width: 980px) { .nav-logo img { height: 44px; } }
+.nav-links { font-weight: 500; font-size: 0.92rem; color: #3d463c; }
+.nav-links a { border-bottom: 0; }
+.nav-links a:hover { color: var(--orange-deep); }
+.nav .btn { min-height: 44px; }
+
+/* Portadas como gran tarjeta redondeada */
+.o-hero, .hero.night, .art-head { background: var(--tb-bg); margin-top: -86px; padding-top: 98px; padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.o-hero .wrap, .art-head .wrap { width: calc(100% - 32px); max-width: 1176px; background: linear-gradient(135deg, var(--tb-peach) 0%, #f3f1e8 55%, var(--night) 100%); border-radius: 28px; padding: clamp(1.75rem, 5vw, 4rem); }
+.art-head .wrap { max-width: 1176px; }
+.o-hero h1, .hero.night h1 { padding-left: clamp(0.9rem, 2vw, 1.4rem); border-left: 2px solid var(--orange); }
+.hero-sub, .art-lead { color: #3d463c; }
+.o-card { background: #ffffff; border-radius: 20px; box-shadow: 0 10px 30px rgba(21, 26, 21, 0.08); }
+.o-card ul { border-top-width: 1px; }
+.o-photo { border-radius: 14px; }
+.hero.night .hero-grid { width: calc(100% - 32px); max-width: 1176px; margin-inline: auto; border-radius: 28px; overflow: hidden; background: linear-gradient(135deg, var(--tb-peach) 0%, #f3f1e8 100%); min-height: 0; }
+.hero.night .hero-copy { padding: clamp(1.75rem, 5vw, 4rem); }
+@media (min-width: 980px) { .hero.night .hero-grid { min-height: 520px; } .hero.night .hero-copy { padding-left: clamp(1.75rem, 5vw, 4rem); } }
+.hero-creds { color: var(--muted); }
+.hero-creds li::before { filter: none; }
+
+/* La linterna original se mantiene oscura dentro de la tarjeta */
+.field { background: #1a2019; border: 0; min-height: 320px; }
+.field-tag, .readout { color: #aab5a7; }
+.readout b { color: #f26b0f; }
+.seen span { background: #141914; color: #eef2ea; border-color: rgba(238, 242, 234, 0.18); }
+
+/* Secciones y tarjetas */
+.band { padding-block: clamp(3.5rem, 8vw, 6rem); }
+.night { background: var(--night); color: var(--ink); }
+.svc-list, .stack, .costs, .steps li, .faq, .zones, .news-list, .check, .o-card ul, .eq div, .quotes figure:first-child, .o-quote, .figs { border-top-width: 1px; border-top-color: var(--line); }
+.vs-col, .who-col, .ficha, .stack-total, .warn, .art-chart, .sign { border-radius: 20px; }
+.sign { border-radius: 999px; padding-inline: 1.25rem; border-width: 1px; }
+.sign[aria-pressed="true"] { background: var(--ink); color: #ffffff; }
+.vs-col { border-color: var(--line); background: #ffffff; }
+.vs-good { background: var(--tb-peach); border-color: var(--tb-peach-2); color: var(--ink); }
+.vs-good h3 { color: var(--orange-deep); }
+.vs-good .vs-tag { color: var(--muted); }
+.vs-good li::before { color: var(--green); }
+.vs-col li::before { color: var(--orange-deep); }
+.who-yes { background: var(--tb-peach); border-color: var(--tb-peach-2); }
+.ficha { background: var(--tb-peach); color: var(--ink); border: 1px solid var(--tb-peach-2); }
+.ficha h3 { color: var(--ink); font-weight: 300; letter-spacing: -0.04em; }
+.ficha-top b { color: var(--orange-deep); }
+.ficha .sci, .ficha-note, .ficha dt { color: var(--muted); }
+.ficha dd { color: var(--ink); }
+.f-photo { border-radius: 14px; }
+.stack-total { background: var(--tb-peach); color: var(--ink); }
+.art-chart { background: #ffffff; border: 1px solid var(--line); color: var(--ink); }
+.bar-track { background: var(--night-2); border-radius: 999px; }
+.bar-fill { border-radius: 999px; background: var(--orange); }
+.bar-fill.low { background: #9aa698; }
+.bar-label b, .ficha-top b { color: var(--orange-deep); }
+.gar-num, .cost b, .fig b, .moments li::before { color: var(--orange); }
+.gar-copy .gar-note { color: var(--ink); }
+.gal img, .o-team img, .art-fig img { border-radius: 20px; }
+.night .gal img { background: #000; border-color: transparent; }
+.night .gal span { color: var(--muted); }
+.svc:hover { background: var(--tb-peach); border-radius: 12px; }
+.pull { border-left-width: 2px; }
+.cal-end em { color: var(--orange-deep); }
+.cta-data a, .tel { text-decoration-thickness: 1px; }
+
+/* Cierre de contacto como tarjeta degradada */
+#contacto.night { background: var(--white); }
+#contacto .wrap { width: calc(100% - 32px); max-width: 1176px; background: linear-gradient(180deg, var(--night) 0%, var(--tb-peach) 100%); border-radius: 28px; padding: clamp(2rem, 6vw, 4rem); }
+.o-final .lines { color: #3d463c; text-transform: none; letter-spacing: 0; font-size: 0.95rem; font-weight: 400; }
+.o-final .lines b { color: var(--ink); font-weight: 600; }
+.data { border-top-color: var(--line); }
+.data li { border-bottom-color: var(--line); }
+.copy { border-color: var(--line); color: var(--ink); background: #ffffff; }
+.copy:hover { border-color: var(--ink); color: var(--ink); }
+
+/* Footer negro */
+.footer { background: var(--tb-black); color: #a3aaa1; border-top: 0; padding-top: clamp(2.5rem, 5vw, 3.5rem); }
+.footer b { color: #ffffff; font-weight: 700; letter-spacing: -0.05em; }
+.footer a:hover { color: #ffffff; }
 </style>
 </head>
 <body>
