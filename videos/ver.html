@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vista previa de video · A&amp;C</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0f130f; overflow: hidden; }
+  #lienzo { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
+  #lienzo svg { max-width: 100vw; max-height: 100vh; aspect-ratio: 9 / 16; display: block; }
+</style>
+</head>
+<body>
+<div id="lienzo"></div>
+<script src="motor.js"></script>
+<script>
+  // ver.html?v=cucarachas-refugio  (carpeta del video)
+  const v = new URLSearchParams(location.search).get('v') || 'cucarachas-refugio';
+  const s = document.createElement('script');
+  s.src = v + '/escenas.js';
+  s.onload = () => {
+    const el = document.getElementById('lienzo'), dur = M.duracion(VIDEO);
+    window.DUR = dur;
+    window.renderAt = t => { el.innerHTML = M.frame(VIDEO, t); };
+    if (new URLSearchParams(location.search).has('render')) { window.renderAt(0); window.LISTO = true; return; }
+    const t0 = performance.now();
+    (function loop(now) { window.renderAt(((now - t0) / 1000) % dur); requestAnimationFrame(loop); })(t0);
+  };
+  document.body.appendChild(s);
+</script>
+</body>
+</html>
