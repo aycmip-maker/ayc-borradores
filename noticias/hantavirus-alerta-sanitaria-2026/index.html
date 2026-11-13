@@ -321,6 +321,27 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 .news-item h2 { font-size: clamp(1.2rem, 2.6vw, 1.7rem); }
 .news-item p { color: var(--muted); max-width: 70ch; }
 .news-item .go { font-weight: 600; color: var(--orange-deep); }
+
+/* Linterna reutilizable */
+.lx-card { display: grid; grid-template-columns: 1fr; background: #141914; color: #eef2ea; border-radius: 24px; overflow: hidden; border: 1px solid rgba(238, 242, 234, 0.12); }
+@media (min-width: 900px) { .lx-card:not(.lx-compact) { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); } }
+.lx-copy { padding: clamp(1.5rem, 4vw, 2.75rem); display: grid; gap: 0.9rem; align-content: center; min-width: 0; }
+.lx-copy .lx-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #f26b0f; margin: 0; }
+.lx-copy h2, .lx-copy h3 { margin: 0; font-size: clamp(1.35rem, 2.8vw, 2rem); line-height: 1.12; letter-spacing: -0.025em; color: #eef2ea; text-wrap: balance; }
+.lx-copy p { margin: 0; color: #aab5a7; font-size: 1.02rem; line-height: 1.55; }
+.lx-copy .lx-hint { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: #7f8a7c; }
+.lx-field { position: relative; min-height: 300px; background: #1a2019; overflow: hidden; touch-action: pan-y; cursor: crosshair; --mx: 60%; --my: 45%; --rad: 120px; }
+@media (min-width: 900px) { .lx-field { min-height: 380px; --rad: 170px; } }
+.lx-field[data-kind="termita"] { background: #1d150d; }
+.lx-field[data-kind="polvo"] { background: #171a1c; }
+.lx-field canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lx-field .lx-c { -webkit-mask-image: radial-gradient(circle var(--rad) at var(--mx) var(--my), #000 0%, #000 55%, transparent 100%); mask-image: radial-gradient(circle var(--rad) at var(--mx) var(--my), #000 0%, #000 55%, transparent 100%); }
+.lx-beam { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle var(--rad) at var(--mx) var(--my), rgba(255, 206, 140, 0.20) 0%, rgba(255, 206, 140, 0.07) 60%, transparent 100%); }
+.lx-tag, .lx-read, .lx-seen { position: absolute; font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; text-transform: uppercase; pointer-events: none; }
+.lx-tag { left: 14px; top: 12px; right: 14px; font-size: 0.68rem; letter-spacing: 0.1em; color: #aab5a7; }
+.lx-read { left: 14px; right: 14px; bottom: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.2rem 1.25rem; font-size: 0.72rem; letter-spacing: 0.06em; color: #aab5a7; }
+.lx-read b { color: #f26b0f; font-weight: 600; font-variant-numeric: tabular-nums; }
+.lx-seen { font-size: 0.66rem; letter-spacing: 0.08em; color: #eef2ea; background: #141914; padding: 2px 8px; border: 1px solid rgba(238, 242, 234, 0.18); border-radius: 4px; transform: translate(14px, -50%); white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -402,6 +423,22 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
         <section aria-labelledby="c-h">
           <h2 id="c-h">No necesitas ver al ratón para contagiarte</h2>
           <p>El reservorio es el ratón colilargo (<i>Oligoryzomys longicaudatus</i>), que está activo todo el año. Cuando orina o deja fecas, eso se seca y se hace polvo. Ese polvo queda en el aire de los lugares cerrados y tú puedes respirarlo al entrar, sin darte cuenta.</p>
+          <div class="lx-card lx-compact">
+  <div class="lx-copy">
+    <p class="lx-eyebrow">Pasa la linterna</p>
+    <h3>El riesgo está en el aire</h3>
+    <p>Las fecas y la orina secas del ratón se vuelven polvo, y ese polvo queda suspendido en los lugares cerrados.</p>
+    <p class="lx-hint">Mueve el cursor o toca la imagen</p>
+  </div>
+  <div class="lx-field" data-kind="polvo" data-extra="feca" data-ratio="0.05" data-layout="libre" data-dens="650" role="img" aria-label="El riesgo está en el aire. Ilustración interactiva.">
+    <canvas class="lx-c" aria-hidden="true"></canvas>
+    <canvas class="lx-t" aria-hidden="true"></canvas>
+    <div class="lx-beam"></div>
+    <span class="lx-tag">Bodega cerrada hace meses</span>
+    
+    <div class="lx-read"><span>Ratones a la vista: <b>0</b></span><span>Partículas en el haz: <b class="lx-n">0</b></span></div>
+  </div>
+</div>
           <p class="pull">El riesgo real no es cruzarte con un ratón. Es entrar a una bodega que llevaba meses cerrada.</p>
         </section>
 
@@ -453,5 +490,128 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 </footer>
 
 <a class="fab" href="https://wa.me/56936678897?text=Hola%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20hantavirus%20y%20tengo%20una%20consulta." target="_blank" rel="noopener" aria-label="Escribir a A&amp;C por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function ell(c, x, y, rx, ry) { c.beginPath(); c.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); c.fill(); }
+  var DRAW = {
+    cucaracha: function (c, v) {
+      var col = ['#d08a47', '#b9743a', '#e0a162', '#a7672f'][v % 4];
+      c.strokeStyle = col; c.fillStyle = col; c.lineWidth = 0.9; c.lineCap = 'round'; c.beginPath();
+      c.moveTo(-3, -3); c.lineTo(-8, -7); c.moveTo(-4, 0); c.lineTo(-10, 0); c.moveTo(-3, 3); c.lineTo(-8, 8);
+      c.moveTo(3, -3); c.lineTo(8, -7); c.moveTo(4, 0); c.lineTo(10, 0); c.moveTo(3, 3); c.lineTo(8, 8);
+      c.moveTo(-1.5, -7); c.quadraticCurveTo(-4, -12, -8, -12); c.moveTo(1.5, -7); c.quadraticCurveTo(4, -12, 8, -12); c.stroke();
+      ell(c, 0, 1, 3.8, 6.6); ell(c, 0, -6.6, 2.2, 2.2);
+    },
+    termita: function (c, v) {
+      var body = ['#ead9ae', '#dfcc9c', '#f1e4c0'][v % 3];
+      c.strokeStyle = body; c.lineWidth = 0.7; c.lineCap = 'round'; c.beginPath();
+      c.moveTo(-2, -3.5); c.lineTo(-5.5, -5.5); c.moveTo(-2, -2); c.lineTo(-6, -1.5); c.moveTo(-2, -0.5); c.lineTo(-5.5, 2);
+      c.moveTo(2, -3.5); c.lineTo(5.5, -5.5); c.moveTo(2, -2); c.lineTo(6, -1.5); c.moveTo(2, -0.5); c.lineTo(5.5, 2);
+      c.moveTo(-1, -8.5); c.lineTo(-3, -11.5); c.moveTo(1, -8.5); c.lineTo(3, -11.5); c.stroke();
+      c.fillStyle = body; ell(c, 0, 3.2, 2.9, 5.2); ell(c, 0, -2.6, 2.1, 2);
+      c.fillStyle = '#c88a3c'; ell(c, 0, -6.6, 2.3, 2.5);
+    },
+    avispa: function (c) {
+      c.fillStyle = 'rgba(235, 240, 245, 0.35)';
+      c.save(); c.translate(-4.5, -1.5); c.rotate(-0.55); ell(c, 0, 0, 5.2, 1.9); c.restore();
+      c.save(); c.translate(4.5, -1.5); c.rotate(0.55); ell(c, 0, 0, 5.2, 1.9); c.restore();
+      c.fillStyle = '#f2c230'; ell(c, 0, 4.2, 2.9, 5.8);
+      c.strokeStyle = '#2a1e0c'; c.lineWidth = 1.5; c.lineCap = 'butt'; c.beginPath();
+      c.moveTo(-2.6, 2); c.lineTo(2.6, 2); c.moveTo(-2.8, 4.6); c.lineTo(2.8, 4.6); c.moveTo(-2.2, 7.2); c.lineTo(2.2, 7.2); c.stroke();
+      c.fillStyle = '#4a3512'; ell(c, 0, -3, 2.6, 2.6);
+      c.fillStyle = '#f2c230'; ell(c, 0, -6.8, 1.9, 1.8);
+      c.strokeStyle = '#caa42a'; c.lineWidth = 0.7; c.lineCap = 'round'; c.beginPath();
+      c.moveTo(-1, -8.2); c.lineTo(-3.2, -11); c.moveTo(1, -8.2); c.lineTo(3.2, -11); c.stroke();
+    },
+    raton: function (c, v) {
+      var fur = ['#8d8478', '#7c746a', '#9a9085'][v % 3];
+      c.scale(1.7, 1.7);
+      c.strokeStyle = fur; c.lineWidth = 0.9; c.lineCap = 'round'; c.beginPath();
+      c.moveTo(0, 7); c.quadraticCurveTo(1, 14, 7, 17); c.stroke();
+      c.fillStyle = fur; ell(c, 0, 0.5, 4.4, 7); ell(c, 0, -7.6, 2.9, 3.5);
+      c.fillStyle = '#b3a99b'; ell(c, -2.9, -6.6, 1.8, 1.8); ell(c, 2.9, -6.6, 1.8, 1.8);
+      c.fillStyle = '#ffe9b0'; ell(c, -1.1, -9.3, 0.5, 0.5); ell(c, 1.1, -9.3, 0.5, 0.5);
+    },
+    feca: function (c, v) { c.fillStyle = ['#a88a66', '#96795a', '#b89a74'][v % 3]; ell(c, 0, 0, 1.7, 4.2); },
+    polvo: function (c, v) { c.fillStyle = 'rgba(255, 236, 200, ' + (0.25 + (v % 6) * 0.1) + ')'; ell(c, 0, 0, 0.6 + (v % 4) * 0.4, 0.6 + (v % 4) * 0.4); }
+  };
+
+  function init(field, idx) {
+    var cv = field.querySelector('.lx-c'), top = field.querySelector('.lx-t'), nEl = field.querySelector('.lx-n'), seenEl = field.querySelector('.lx-seen');
+    var c = cv.getContext('2d'), t = top.getContext('2d');
+    var kind = field.getAttribute('data-kind'), extra = field.getAttribute('data-extra'), ratio = parseFloat(field.getAttribute('data-ratio')) || 0;
+    var layout = field.getAttribute('data-layout'), dens = parseFloat(field.getAttribute('data-dens')) || 2300, seenKind = field.getAttribute('data-seen-kind');
+    var items = [], W = 0, H = 0, rad = 120, pos = { x: 0, y: 0 }, manualUntil = 0, last = -1, running = false, onScreen = false;
+
+    function place(rand) {
+      var u = rand(), v = rand();
+      if (layout === 'centro') { var a = rand() * Math.PI * 2, d = Math.pow(rand(), 0.75) * Math.min(W, H) * 0.46; return [W * 0.5 + Math.cos(a) * d * 1.25, H * 0.5 + Math.sin(a) * d]; }
+      if (layout === 'vetas') { var rows = Math.max(3, Math.round(H / 62)), r = Math.floor(v * rows); return [u * W, (r + 0.5) * H / rows + (rand() - 0.5) * 20 + Math.sin(u * 9 + r) * 9]; }
+      if (layout === 'libre') return [u * W, v * H];
+      return [(u < 0.5 ? Math.pow(u * 2, 1.6) / 2 : 1 - Math.pow((1 - u) * 2, 1.6) / 2) * W, (v < 0.5 ? Math.pow(v * 2, 1.3) / 2 : 1 - Math.pow((1 - v) * 2, 1.3) / 2) * H];
+    }
+    function stamp(ctx, k, x, y, a, s, v) { ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.scale(s, s); DRAW[k](ctx, v); ctx.restore(); }
+
+    function build() {
+      var b = field.getBoundingClientRect(); W = b.width; H = b.height; if (!W || !H) return;
+      rad = parseFloat(getComputedStyle(field).getPropertyValue('--rad')) || 120;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      [cv, top].forEach(function (k) { k.width = Math.round(W * dpr); k.height = Math.round(H * dpr); });
+      c.setTransform(dpr, 0, 0, dpr, 0, 0); t.setTransform(dpr, 0, 0, dpr, 0, 0);
+      c.clearRect(0, 0, W, H); t.clearRect(0, 0, W, H);
+      var rand = rng(40511 + idx * 977);
+      if (layout === 'vetas') {
+        var rows = Math.max(3, Math.round(H / 62));
+        c.strokeStyle = 'rgba(120, 82, 44, 0.55)'; c.lineWidth = 15; c.lineCap = 'round';
+        for (var r = 0; r < rows; r++) { c.beginPath(); for (var x = -10; x <= W + 10; x += 14) { var yy = (r + 0.5) * H / rows + Math.sin(x / W * 9 + r) * 9; if (x < 0) c.moveTo(x, yy); else c.lineTo(x, yy); } c.stroke(); }
+      }
+      if (layout === 'centro') {
+        t.fillStyle = '#0b0e0b'; t.beginPath(); t.ellipse(W * 0.5, H * 0.5, 30, 15, 0, 0, Math.PI * 2); t.fill();
+        t.strokeStyle = 'rgba(170, 150, 110, 0.5)'; t.lineWidth = 2; t.stroke();
+      }
+      var n = Math.max(40, Math.min(520, Math.round(W * H / dens)));
+      items = [];
+      for (var i = 0; i < n; i++) {
+        var p = place(rand), k = (extra && rand() < ratio) ? extra : kind;
+        if (p[0] < 6 || p[0] > W - 6 || p[1] < 6 || p[1] > H - 6) continue;
+        items.push({ x: p[0], y: p[1] });
+        stamp(c, k, p[0], p[1], rand() * Math.PI * 2, 0.8 + rand() * 0.6, Math.floor(rand() * 12));
+      }
+      if (seenKind) {
+        var sx = layout === 'centro' ? W * 0.5 + 44 : W * 0.24, sy = layout === 'centro' ? H * 0.5 - 20 : H * 0.7;
+        stamp(t, seenKind, sx, sy, layout === 'centro' ? 2.3 : 0.5, 1.5, 0);
+        if (seenEl) { seenEl.style.left = sx + 'px'; seenEl.style.top = sy + 'px'; }
+      }
+      set(W * 0.62, H * 0.45);
+    }
+    function set(x, y) {
+      pos.x = x; pos.y = y;
+      field.style.setProperty('--mx', x + 'px'); field.style.setProperty('--my', y + 'px');
+      var k = 0, r2 = rad * rad * 0.72;
+      for (var i = 0; i < items.length; i++) { var dx = items[i].x - x, dy = items[i].y - y; if (dx * dx + dy * dy < r2) k++; }
+      if (k !== last) { last = k; nEl.textContent = k; }
+    }
+    function point(e) { var b = field.getBoundingClientRect(); manualUntil = performance.now() + 2600; set(e.clientX - b.left, e.clientY - b.top); }
+    field.addEventListener('pointermove', point); field.addEventListener('pointerdown', point);
+    function tick(now) {
+      if (now > manualUntil) {
+        var s = now / 1000 + idx * 1.7;
+        var tx = W * (0.5 + 0.34 * Math.sin(s * 0.42)), ty = H * (0.48 + 0.3 * Math.sin(s * 0.63 + 1.2));
+        set(pos.x + (tx - pos.x) * 0.06, pos.y + (ty - pos.y) * 0.06);
+      }
+      if (onScreen && !document.hidden) requestAnimationFrame(tick); else running = false;
+    }
+    function start() { if (!reduce && !running && onScreen && !document.hidden) { running = true; requestAnimationFrame(tick); } }
+    build();
+    var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 140); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { onScreen = en[0].isIntersecting; if (onScreen && !W) build(); start(); }).observe(field);
+    else { onScreen = true; start(); }
+    document.addEventListener('visibilitychange', start);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.lx-field'), init);
+})();
+</script>
 </body>
 </html>

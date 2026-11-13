@@ -320,6 +320,27 @@ h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.6
 .news-item h2 { font-size: clamp(1.2rem, 2.6vw, 1.7rem); }
 .news-item p { color: var(--muted); max-width: 70ch; }
 .news-item .go { font-weight: 600; color: var(--orange-deep); }
+
+/* Linterna reutilizable */
+.lx-card { display: grid; grid-template-columns: 1fr; background: #141914; color: #eef2ea; border-radius: 24px; overflow: hidden; border: 1px solid rgba(238, 242, 234, 0.12); }
+@media (min-width: 900px) { .lx-card:not(.lx-compact) { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); } }
+.lx-copy { padding: clamp(1.5rem, 4vw, 2.75rem); display: grid; gap: 0.9rem; align-content: center; min-width: 0; }
+.lx-copy .lx-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #f26b0f; margin: 0; }
+.lx-copy h2, .lx-copy h3 { margin: 0; font-size: clamp(1.35rem, 2.8vw, 2rem); line-height: 1.12; letter-spacing: -0.025em; color: #eef2ea; text-wrap: balance; }
+.lx-copy p { margin: 0; color: #aab5a7; font-size: 1.02rem; line-height: 1.55; }
+.lx-copy .lx-hint { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: #7f8a7c; }
+.lx-field { position: relative; min-height: 300px; background: #1a2019; overflow: hidden; touch-action: pan-y; cursor: crosshair; --mx: 60%; --my: 45%; --rad: 120px; }
+@media (min-width: 900px) { .lx-field { min-height: 380px; --rad: 170px; } }
+.lx-field[data-kind="termita"] { background: #1d150d; }
+.lx-field[data-kind="polvo"] { background: #171a1c; }
+.lx-field canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lx-field .lx-c { -webkit-mask-image: radial-gradient(circle var(--rad) at var(--mx) var(--my), #000 0%, #000 55%, transparent 100%); mask-image: radial-gradient(circle var(--rad) at var(--mx) var(--my), #000 0%, #000 55%, transparent 100%); }
+.lx-beam { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle var(--rad) at var(--mx) var(--my), rgba(255, 206, 140, 0.20) 0%, rgba(255, 206, 140, 0.07) 60%, transparent 100%); }
+.lx-tag, .lx-read, .lx-seen { position: absolute; font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; text-transform: uppercase; pointer-events: none; }
+.lx-tag { left: 14px; top: 12px; right: 14px; font-size: 0.68rem; letter-spacing: 0.1em; color: #aab5a7; }
+.lx-read { left: 14px; right: 14px; bottom: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.2rem 1.25rem; font-size: 0.72rem; letter-spacing: 0.06em; color: #aab5a7; }
+.lx-read b { color: #f26b0f; font-weight: 600; font-variant-numeric: tabular-nums; }
+.lx-seen { font-size: 0.66rem; letter-spacing: 0.08em; color: #eef2ea; background: #141914; padding: 2px 8px; border: 1px solid rgba(238, 242, 234, 0.18); border-radius: 4px; transform: translate(14px, -50%); white-space: nowrap; }
 </style>
 </head>
 <body>
