@@ -51,3 +51,25 @@ Interpretaciones propias, por confirmar:
 ### Clips de apoyo para un reel grabado
 
 `node videos/render.js termitas-tratamiento --clips --limpio` exporta cada escena como un clip suelto, sin títulos (quedan los rótulos y las cotas), para ponerlos encima del video a cámara. La escena `gancho` abre el video: la casa se ve bien por fuera y la cámara baja al subsuelo, donde las termitas van hacia los cimientos. El texto del gancho ("por fuera, todo se ve bien / por debajo, ya llegaron") es una propuesta mía, no una cita; solo aparece en el video completo.
+
+## termitas-madera-seca (106 s, sin voz)
+
+Tratamiento de termita de madera seca por inyección en madera, según la pauta de 10 escenas que entregó Francisco (con sus fuentes: ficha técnica A&C del sistema MABI, catálogo MABI, Morales 2023, Ponce 2024-2025, Ripa y Luppichini 2004).
+
+Los textos en pantalla son los de la pauta, sin cambios:
+"la colonia vive dentro de la madera" · "granitos = colonia activa en esa pieza" · "primero la especie, después el tratamiento" · "puede haber varias colonias en una misma casa" · "hasta 2/3 del espesor" · "tarugo con válvula antirretorno" · "deja entrar, no deja salir" · "termiticida con registro ISP" · "se puede pintar o barnizar encima" · "cada pieza tratada queda registrada" · "sin granitos nuevos = sin actividad".
+
+Las medidas de los tarugos (vigas, marcos, cabios) y los tres consejos de prevención también son los de la pauta.
+
+Rótulos agregados, tomados de la descripción visual de la pauta: "sonido hueco", "alas sueltas", "madera seca", "subterránea / otro tratamiento", "viga / marco / mueble", "reemplazar", "patrón en zigzag", "viga gruesa: por ambos lados", "queda ajustado a la madera", "bolita metálica", "canales de difusión", "la válvula se cierra", "llega hasta la colonia", "tapón: permite reinyectar", "tarugo de haya: lo oculta en forma definitiva", "si aparecen granitos nuevos… se reinyecta por el mismo tarugo", "sin volver a perforar", "prevención".
+
+Ilustrativo, por revisar contra la ficha y el catálogo MABI (no los tuve a la vista):
+
+- La forma interna de la válvula (conducto, asiento, cámara, posición de los canales de difusión) y el aspecto exterior del tarugo.
+- La profundidad de cada perforación en la viga gruesa (por ambos lados) y la separación entre orificios del zigzag.
+- El calendario muestra "mes 1" a "mes 6" solo para indicar que pasa el tiempo; la pauta dice "varios meses", sin cifra.
+- La ficha de registro no muestra producto ni fecha reales.
+
+Respeta la lista "no mostrar": sin inyección en muros, sin fungicidas, cebos ni aspersión, sin termitas saliendo del suelo, sin plazos de garantía, sin dosis, y las termitas no tienen ojos. Los túneles de barro aparecen solo en la escena 3, rotulados como termita subterránea.
+
+Dura 106 s y la pauta pedía ~90 s: se ajusta al tener la locución.
