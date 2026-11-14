@@ -8,10 +8,10 @@ const VIDEO = (() => {
   /* ---------- utilidades ---------- */
   const cam = (inner, cx, cy, z, rot = 0) =>
     `<g transform="translate(${W / 2} ${H / 2}) rotate(${rot}) scale(${z}) translate(${-cx} ${-cy})">${inner}</g>`;
-  const velo = (h = 700, o = 0.85) =>
+  const velo = (h = 700, o = 0.85) => M.estado.limpio ? '' :
     `<defs><linearGradient id="velo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f130f" stop-opacity="${o}"/><stop offset=".55" stop-color="#0f130f" stop-opacity="${o * 0.7}"/><stop offset="1" stop-color="#0f130f" stop-opacity="0"/></linearGradient></defs><rect width="${W}" height="${h}" fill="url(#velo)"/>`;
   const paso = (n, s, t, t0 = 0.2, t1 = 1e9) => {
-    const p = M.pop(t, t0, t1); if (p.o <= 0) return '';
+    const p = M.pop(t, t0, t1); if (p.o <= 0 || M.estado.limpio) return '';
     const w = s.length * 37 + 150;
     return `<g transform="translate(${W / 2} 330) scale(${p.s})" opacity="${p.o}" filter="url(#sombra)">
       <rect x="${-w / 2}" y="-52" width="${w}" height="104" rx="52" fill="${C.night}" fill-opacity=".92"/>
@@ -182,6 +182,30 @@ const VIDEO = (() => {
 
   /* ================= ESCENAS ================= */
 
+  // 0 — Gancho: la casa se ve bien por fuera; la cámara baja al subsuelo y las termitas van hacia los cimientos.
+  const qb = (a, c, b, u) => [(1 - u) * (1 - u) * a[0] + 2 * (1 - u) * u * c[0] + u * u * b[0], (1 - u) * (1 - u) * a[1] + 2 * (1 - u) * u * c[1] + u * u * b[1]];
+  const RUTAS = [
+    [[[-400, 2000], [-100, 1940], [60, 1720]], [[60, 1720], [220, 1500], [190, 1360]]],
+    [[[-400, 2200], [300, 2280], [700, 2060]], [[700, 2060], [1100, 1840], [960, 1720]], [[960, 1720], [820, 1600], [892, 1360]]],
+  ];
+  const enRuta = (r, u) => { const n = r.length, k = Math.min(n - 1, Math.floor(u * n)), g = r[k]; return qb(g[0], g[1], g[2], u * n - k); };
+  const gancho = {
+    dur: 5,
+    draw(t) {
+      let w = casa(t);
+      RUTAS.forEach((r, k) => {
+        for (let i = 0; i < 9; i++) {
+          const u = (t * 0.07 + i / 9 + k * 0.05) % 1, [x, y] = enRuta(r, u), [x2, y2] = enRuta(r, Math.min(1, u + 0.01));
+          w += termita(x, y + (i % 2 ? 5 : -5), Math.atan2(y2 - y, x2 - x) * 180 / Math.PI, 0.8, t, { seed: i + k * 9 });
+        }
+      });
+      const p = eInOut(prog(t, 1.1, 1.3)), q = prog(t, 2.4, 2.6);
+      return cam(w, lerp(540, 300, p), lerp(790, 1640, p) - q * 40, lerp(1.22, 1.75, p) + q * 0.15) + velo(640, 0.85)
+        + texto(['por fuera,', 'todo se ve bien'], { y: 330, size: 96, t, t0: 0.2, t1: 1.5 })
+        + texto([{ s: 'por debajo,' }, { s: 'ya llegaron', fill: C.orange }], { y: 330, size: 108, t, t0: 2.3 });
+    },
+  };
+
   // 1 — Dron: llegada a la casa.
   const dron = {
     dur: 5.5,
@@ -307,7 +331,7 @@ const VIDEO = (() => {
       w += `<rect x="-100" y="-100" width="390" height="${gy + 100}" fill="#f4e9d2"/><rect x="-100" y="${gy - 260}" width="390" height="260" fill="${CONC}"/><rect x="270" y="-100" width="20" height="${gy + 100}" fill="#000" opacity=".1"/>`;
       w += `<rect x="-100" y="${gy}" width="1280" height="800" fill="${SUELO}"/>` + piedras(50, -100, gy + 90, 1280, 500, 11);
       w += `<rect x="290" y="${gy}" width="890" height="70" fill="#c9c6bd"/><rect x="290" y="${gy}" width="890" height="12" fill="#fff" opacity=".3"/><rect x="-100" y="${gy}" width="390" height="420" fill="#8f8b82"/>`;
-      w += `<rect x="${hx - 15}" y="${gy}" width="30" height="${Math.max(0, d + 20)}" fill="#2b2018"/>`;
+      w += `<rect x="${hx - 15}" y="${gy}" width="30" height="${eInOut(prog(t, 0.5, 1.9)) * 250 + (t > 0.5 ? 20 : 0)}" fill="#2b2018"/>`;
       // polvo
       if (t > 0.6 && t < 2.4) for (let i = 0; i < 12; i++) { const a = ((t * 2.2 + rnd(i)) % 1); w += `<circle cx="${hx + (rnd(i + 4) - 0.5) * 240 * a}" cy="${gy - 10 - a * 120 * rnd(i + 8)}" r="${7 + rnd(i) * 10}" fill="#d8d2c4" opacity="${(1 - a) * 0.8}"/>`; }
       // taladro
@@ -486,6 +510,7 @@ const VIDEO = (() => {
 
   return {
     nombre: 'termitas-tratamiento',
-    escenas: [dron, inspeccion, barro, madera, alas, perforacion, taladro, equipo, gatillo, corte, barrera, subsuelo, subida, salida, fin],
+    clips: ['gancho', 'dron-llegada', 'inspeccion', 'canales-de-barro', 'madera-comida', 'alas', 'perforacion-aerea', 'taladro-10cm', 'equipo-100L', 'gatillo', 'corte-suelo-40cm', 'barrera', 'subsuelo-muerte-en-cadena', 'subida-casa-sana', 'dron-salida', 'cierre'],
+    escenas: [gancho, dron, inspeccion, barro, madera, alas, perforacion, taladro, equipo, gatillo, corte, barrera, subsuelo, subida, salida, fin],
   };
 })();

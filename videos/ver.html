@@ -21,7 +21,11 @@
   s.onload = () => {
     const el = document.getElementById('lienzo'), dur = M.duracion(VIDEO);
     window.DUR = dur;
+    const q = new URLSearchParams(location.search);
+    M.estado.limpio = q.has('limpio');
+    window.ESCENAS = VIDEO.escenas.map((e, i) => ({ dur: e.dur, nombre: (VIDEO.clips || [])[i] || 'escena' + (i + 1) }));
     window.renderAt = t => { el.innerHTML = M.frame(VIDEO, t); };
+    window.renderEscena = (i, t) => { el.innerHTML = M.frameEscena(VIDEO, i, t); };
     if (new URLSearchParams(location.search).has('render')) { window.renderAt(0); window.LISTO = true; return; }
     const t0 = performance.now();
     (function loop(now) { window.renderAt(((now - t0) / 1000) % dur); requestAnimationFrame(loop); })(t0);

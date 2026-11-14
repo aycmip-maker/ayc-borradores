@@ -47,3 +47,7 @@ Interpretaciones propias, por confirmar:
 - **"40 cm"**: se dibujó como la profundidad a la que llega la lanza bajo el suelo. El pedido decía "a 40 centímetros del suelo".
 - La separación entre perforaciones, la profundidad del cimiento y la forma en que se expande el líquido son ilustrativas, no medidas.
 - El inspector y el aplicador son figuras genéricas, sin logos.
+
+### Clips de apoyo para un reel grabado
+
+`node videos/render.js termitas-tratamiento --clips --limpio` exporta cada escena como un clip suelto, sin títulos (quedan los rótulos y las cotas), para ponerlos encima del video a cámara. La escena `gancho` abre el video: la casa se ve bien por fuera y la cámara baja al subsuelo, donde las termitas van hacia los cimientos. El texto del gancho ("por fuera, todo se ve bien / por debajo, ya llegaron") es una propuesta mía, no una cita; solo aparece en el video completo.

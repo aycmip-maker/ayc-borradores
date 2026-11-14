@@ -9,6 +9,7 @@ const M = (() => {
     bug: '#d08a47', bugDark: '#5a3418', bugLight: '#e0a162',
   };
 
+  const estado = { limpio: false }; // limpio: sin títulos, para usar los clips como apoyo visual
   const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
   const lerp = (a, b, p) => a + (b - a) * p;
   const prog = (t, t0, d) => clamp((t - t0) / d);
@@ -33,6 +34,7 @@ const M = (() => {
   /* Texto centrado multilínea. lines: 'texto' | ['a','b'] | [{s:'a',fill:'#..'}] */
   function texto(lines, o = {}) {
     const { x = W / 2, y = 400, size = 84, fill = C.white, lh = 1.12, t = 1, t0 = 0, t1 = 1e9, weight = 900, sombra = true } = o;
+    if (estado.limpio && !o.fijo) return '';
     const arr = [].concat(lines).map(l => (typeof l === 'string' ? { s: l } : l));
     const p = pop(t, t0, t1);
     if (p.o <= 0) return '';
@@ -133,9 +135,9 @@ const M = (() => {
       <g transform="translate(540 700) scale(${lerp(0.7, 1, eBack(a))})" opacity="${a}">
         <rect x="-250" y="-115" width="500" height="230" rx="36" fill="#fff"/>
         <image href="${logoHref}" x="-198" y="-77" width="396" height="154"/></g>
-      ${texto(['control de plagas urbanas'], { y: 930, size: 62, t, t0: 0.5, fill: C.white })}
-      ${texto([{ s: 'Región de Valparaíso' }, { s: '+56 9 8154 4036', fill: C.orange }, { s: 'www.aycmip.cl' }], { y: 1120, size: 64, lh: 1.5, t, t0: 0.9, weight: 700 })}
-      ${texto(['Resolución sanitaria Nº 402/2020 · SEREMI de Salud Valparaíso'], { y: 1500, size: 30, t, t0: 1.4, weight: 600, fill: '#aab5a7', sombra: false })}`;
+      ${texto(['control de plagas urbanas'], { y: 930, size: 62, t, t0: 0.5, fill: C.white, fijo: true })}
+      ${texto([{ s: 'Región de Valparaíso' }, { s: '+56 9 8154 4036', fill: C.orange }, { s: 'www.aycmip.cl' }], { y: 1120, size: 64, lh: 1.5, t, t0: 0.9, weight: 700, fijo: true })}
+      ${texto(['Resolución sanitaria Nº 402/2020 · SEREMI de Salud Valparaíso'], { y: 1500, size: 30, t, t0: 1.4, weight: 600, fill: '#aab5a7', sombra: false, fijo: true })}`;
   }
 
   /* Compone el cuadro en el tiempo t con fundido entre escenas. */
@@ -150,8 +152,12 @@ const M = (() => {
     });
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" height="100%">${defs}<rect width="${W}" height="${H}" fill="${C.night}"/>${out}</svg>`;
   }
+  /* Una sola escena, sin fundido (para exportar clips sueltos). */
+  function frameEscena(video, i, t) {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" height="100%">${defs}<rect width="${W}" height="${H}" fill="${C.night}"/>${video.escenas[i].draw(t)}</svg>`;
+  }
   const duracion = v => v.escenas.reduce((a, e) => a + e.dur, 0);
 
-  return { W, H, C, clamp, lerp, prog, eOut, eInOut, eBack, rnd, esc, pop, texto, rotulo, tarjetaDia, cucaracha, cocina, cierre, frame, duracion };
+  return { estado, frameEscena, W, H, C, clamp, lerp, prog, eOut, eInOut, eBack, rnd, esc, pop, texto, rotulo, tarjetaDia, cucaracha, cocina, cierre, frame, duracion };
 })();
 if (typeof module !== 'undefined') module.exports = M;
