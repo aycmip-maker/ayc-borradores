@@ -127,17 +127,22 @@ const M = (() => {
     return s;
   }
 
-  /* Cierre estándar con logo y contacto. */
+  /* Cierre: pregunta al espectador, promesa y llamada a la acción con contacto. */
   function cierre(t, logoHref) {
-    const a = eOut(prog(t, 0.1, 0.5));
+    const T = t - 2.9, a = eOut(prog(T, 0, 0.5));
+    const pill = pop(T, 1.3);
     return `<rect width="${W}" height="${H}" fill="${C.night}"/>
-      <circle cx="540" cy="760" r="${520 * a}" fill="${C.night2}"/>
-      <g transform="translate(540 700) scale(${lerp(0.7, 1, eBack(a))})" opacity="${a}">
-        <rect x="-250" y="-115" width="500" height="230" rx="36" fill="#fff"/>
-        <image href="${logoHref}" x="-198" y="-77" width="396" height="154"/></g>
-      ${texto(['control de plagas urbanas'], { y: 930, size: 62, t, t0: 0.5, fill: C.white, fijo: true })}
-      ${texto([{ s: 'Región de Valparaíso' }, { s: '+56 9 8154 4036', fill: C.orange }, { s: 'www.aycmip.cl' }], { y: 1120, size: 64, lh: 1.5, t, t0: 0.9, weight: 700, fijo: true })}
-      ${texto(['Resolución sanitaria Nº 402/2020 · SEREMI de Salud Valparaíso'], { y: 1500, size: 30, t, t0: 1.4, weight: 600, fill: '#aab5a7', sombra: false, fijo: true })}`;
+      ${texto(['¿has intentado', 'erradicarlas', { s: 'y siguen ahí?', fill: C.orange }], { y: 800, size: 116, lh: 1.16, t, t0: 0.2, t1: 2.8, fijo: true })}
+      <circle cx="540" cy="820" r="${640 * a}" fill="${C.night2}"/>
+      <g transform="translate(540 500) scale(${lerp(0.7, 1, eBack(a))})" opacity="${a}">
+        <rect x="-220" y="-100" width="440" height="200" rx="32" fill="#fff"/>
+        <image href="${logoHref}" x="-175" y="-68" width="350" height="136"/></g>
+      ${texto(['nosotros te podemos dar', { s: 'la solución real', fill: C.orange, size: 112 }], { y: 760, size: 72, lh: 1.5, t: T, t0: 0.5, fijo: true })}
+      ${pill.o > 0 ? `<g transform="translate(540 1130) scale(${pill.s})" opacity="${pill.o}" filter="url(#sombra)">
+        <rect x="-400" y="-70" width="800" height="140" rx="70" fill="${C.green}"/>
+        <text y="22" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="60" fill="#fff">escríbenos por WhatsApp</text></g>` : ''}
+      ${texto([{ s: '+56 9 8154 4036', fill: C.orange, size: 88 }, { s: 'www.aycmip.cl' }, { s: 'Región de Valparaíso' }], { y: 1320, size: 56, lh: 1.7, t: T, t0: 1.7, weight: 700, fijo: true })}
+      ${texto(['Resolución sanitaria Nº 402/2020 · SEREMI de Salud Valparaíso'], { y: 1640, size: 30, t: T, t0: 2.2, weight: 600, fill: '#aab5a7', sombra: false, fijo: true })}`;
   }
 
   /* Compone el cuadro en el tiempo t con fundido entre escenas. */

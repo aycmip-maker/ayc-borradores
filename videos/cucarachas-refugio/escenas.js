@@ -125,7 +125,7 @@ const VIDEO = (() => {
     },
   };
 
-  const fin = { dur: 5, draw: t => cierre(t, LOGO) };
+  const fin = { dur: 7.5, draw: t => cierre(t, LOGO) };
   const LOGO = (typeof window !== 'undefined' && window.LOGO_HREF) || '../img/logo-ayc.png';
 
   return { nombre: 'cucarachas-refugio', escenas: [gancho, capsula, refugio, deDia, aerosol, fin] };

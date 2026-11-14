@@ -8,7 +8,7 @@
 
 | Palabras habladas | Duración a 125 ppm | Cuándo publicar |
 |---|---|---|
-| 125 | 1:00 | por definir |
+| 123 | 0:59 | por definir |
 
 ---
 
@@ -34,9 +34,9 @@
 
 "¿Y el aerosol? Muchos son repelentes: en vez de eliminar la colonia, la dispersan a otras zonas de la casa."
 
-**[Escena 6 — cierre con logo y contacto]**
+**[Escena 6 — cierre con pregunta, "solución real" y WhatsApp]**
 
-"Soy Francisco Aracena, especialista en plagas urbanas, y acá vas a entender cómo funcionan las plagas de verdad."
+"¿Has intentado erradicarlas y siguen ahí? Nosotros te podemos dar la solución real. Escríbenos por WhatsApp."
 
 ---
 
@@ -59,7 +59,7 @@
 3. "lo que ves en el mesón…" → "…no es toda la población" · Rótulo "REFUGIO"
 4. "son nocturnas" → "si las ves de día, ya no caben escondidas"
 5. "muchos aerosoles son repelentes" → "dispersan la colonia a otras zonas de la casa"
-6. Logo A&C · "control de plagas urbanas" · Región de Valparaíso · +56 9 8154 4036 · www.aycmip.cl · Resolución sanitaria Nº 402/2020
+6. "¿has intentado erradicarlas y siguen ahí?" → logo A&C · "nosotros te podemos dar la solución real" · "escríbenos por WhatsApp" · Región de Valparaíso · +56 9 8154 4036 · www.aycmip.cl · Resolución sanitaria Nº 402/2020
 
 ---
 
@@ -103,8 +103,8 @@ Mándanos una foto y te decimos qué es.
 
 - **Fuente primaria.** Los cinco datos vienen de la landing, que no cita lámina ni paper. Antes de publicar conviene amarrarlos al original (Material MIP), sobre todo "≈40 huevos", "último tercio de cada etapa" y "ya no caben escondidas".
 - **Teléfono.** El cierre y el caption usan +56 9 8154 4036; la landing de cucarachas muestra +56 9 3667 8897.
-- **Cierre con voz generada.** La frase "Soy Francisco Aracena…" dicha por una voz sintética que no es la tuya presenta esa voz como tú. Si la voz no es un clon de la tuya, conviene que esa línea la grabes tú o sacarla.
-- **Duración.** El video de muestra dura 37 s; con esta locución queda en 1:00. Las escenas se alargan a la medida del audio cuando esté.
+- **Cierre.** Cambiado a pedido de Francisco: pregunta al espectador, "solución real" y llamada a la acción por WhatsApp (reemplaza el cierre estándar "Soy Francisco Aracena…").
+- **Duración.** El video de muestra dura 37 s; con esta locución queda en 0:59. Las escenas se alargan a la medida del audio cuando esté.
 
 ### Qué quedó fuera
 

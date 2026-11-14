@@ -457,7 +457,7 @@ const VIDEO = (() => {
   };
 
   const LOGO = (typeof window !== 'undefined' && window.LOGO_HREF) || '../img/logo-ayc.png';
-  const fin = { dur: 4, draw: t => cierre(t, LOGO) };
+  const fin = { dur: 7.5, draw: t => cierre(t, LOGO) };
 
   return {
     nombre: 'termitas-madera-seca',

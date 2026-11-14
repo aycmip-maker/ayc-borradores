@@ -8,7 +8,7 @@
 
 | Palabras habladas | Duración a 125 ppm | Cuándo publicar |
 |---|---|---|
-| 319 | 2:33 | por definir |
+| 317 | 2:32 | por definir |
 
 ---
 
@@ -62,9 +62,9 @@
 
 "Y para prevenir: revisa la leña y los muebles usados antes de entrarlos a la casa, usa madera seca en horno o tratada en las reparaciones, y protege la madera expuesta con pintura, barniz o sellador."
 
-**[Cierre con logo y contacto]**
+**[Cierre con pregunta, "solución real" y WhatsApp]**
 
-"Soy Francisco Aracena, especialista en plagas urbanas, y acá vas a entender cómo funcionan las plagas de verdad."
+"¿Has intentado erradicarlas y siguen ahí? Nosotros te podemos dar la solución real. Escríbenos por WhatsApp."
 
 ---
 
@@ -140,8 +140,8 @@ La cita es contra la pauta, no contra la fuente primaria: no tuve a la vista la 
 ### Pendientes
 
 - **Fuente primaria.** Falta la cita con página de la ficha A&C, el catálogo MABI y los apuntes, sobre todo para "2/3 del espesor", las medidas de los tarugos y "sin granitos nuevos = sin actividad".
-- **Duración.** El guion pide 2:33 y la animación dura 1:46; la pauta apuntaba a ~90 s (unas 190 palabras). Diez escenas no caben en 90 s a 125 palabras por minuto. O se alarga la animación a la voz, o se sacan bloques. Los que menos pesan en el relato: prevención (36 palabras), el detalle de tapón y tarugo de haya (32) y las señales secundarias de la escena 2 (sonido hueco y alas, 20).
-- **Cierre con voz generada.** Igual que en el video de cucarachas: si la voz no es la tuya, la línea "Soy Francisco Aracena…" conviene grabarla tú o sacarla.
+- **Duración.** El guion pide 2:32 y la animación dura 1:50; la pauta apuntaba a ~90 s (unas 190 palabras). Diez escenas no caben en 90 s a 125 palabras por minuto. O se alarga la animación a la voz, o se sacan bloques. Los que menos pesan en el relato: prevención (36 palabras), el detalle de tapón y tarugo de haya (32) y las señales secundarias de la escena 2 (sonido hueco y alas, 20).
+- **Cierre.** Cambiado a pedido de Francisco: pregunta al espectador, "solución real" y llamada a la acción por WhatsApp (reemplaza el cierre estándar "Soy Francisco Aracena…").
 - **Teléfono.** Sigue en +56 9 8154 4036, pendiente de confirmar.
 
 ### Qué quedó fuera de la voz
