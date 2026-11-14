@@ -25,3 +25,25 @@ No son cita:
 - La landing no cita la fuente primaria de estos datos; falta amarrarlos a la lámina o paper original antes de publicar.
 
 Pendiente de confirmar: el cierre usa el WhatsApp +56 9 8154 4036; la landing de cucarachas muestra +56 9 3667 8897.
+
+## termitas-tratamiento (73 s, sin voz)
+
+Tratamiento antitermitas en una casa, paso a paso: toma aérea, inspección (canales de barro, madera comida, alas), perforación del perímetro, inyección al suelo, barrera no repelente, zoom al subsuelo y cierre.
+
+Trazabilidad: el procedimiento, las medidas y los efectos son los que describió Francisco al pedir el video (criterio profesional del cliente), no citas de una fuente escrita.
+
+| Texto en pantalla | Lo que pidió Francisco |
+|---|---|
+| inspección · se revisan los puntos críticos | "el paso de inspección, se revisan los puntos críticos" |
+| canales de barro · madera comida · alas | "se ven los canales de barro, se ve la madera comida, se ven las alas" |
+| perforación · por todo el perímetro exterior · a no más de 10 cm de la pared | "perforaciones por el perímetro de la casa con un taladro a no más de 10 centímetros de la pared por la parte exterior" |
+| equipo de 100 litros, manguera y lanza · aprieta el gatillo | "máquina de 100 litros con manguera, con una lanza… Aprieta el gatillo" |
+| el líquido ingresa al subsuelo · una barrera no repelente contra las termitas | "el líquido ingresa al subsuelo, generando una cobertura no repelente contra las termitas" |
+| las termitas no la detectan · se van pasando el producto entre ellas · muerte en cadena | "van pasando por esta barrera química que no la detectan, y se van pasando ellas el químico… muerte en cadena" |
+| una casa libre de termitas | "la casa de un aspecto saludable y libre de termitas" |
+
+Interpretaciones propias, por confirmar:
+
+- **"40 cm"**: se dibujó como la profundidad a la que llega la lanza bajo el suelo. El pedido decía "a 40 centímetros del suelo".
+- La separación entre perforaciones, la profundidad del cimiento y la forma en que se expande el líquido son ilustrativas, no medidas.
+- El inspector y el aplicador son figuras genéricas, sin logos.
