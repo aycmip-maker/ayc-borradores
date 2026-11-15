@@ -145,6 +145,29 @@ const M = (() => {
       ${texto(['Resolución sanitaria Nº 402/2020 · SEREMI de Salud Valparaíso'], { y: 1640, size: 30, t: T, t0: 2.2, weight: 600, fill: '#aab5a7', sombra: false, fijo: true })}`;
   }
 
+  /* Reporte digital en un teléfono (sin imitar la interfaz real de CentralMIP).
+     o: { titulo, filas: ['...'], l1, l2, t0 } */
+  function reporte(t, o = {}) {
+    const { titulo = 'reporte', filas = [], l1 = 'reporte digital', l2 = '', colores = ['#b98654', '#86603a', '#dcead9'] } = o;
+    const a = eBack(prog(t, 0.1, 0.45)), sc = lerp(0.82, 1, a);
+    let f = `<rect x="246" y="566" width="588" height="1010" rx="64" fill="#000" opacity=".35" transform="translate(12 18)"/>
+      <rect x="246" y="566" width="588" height="1010" rx="64" fill="#1c1f22"/><rect x="272" y="600" width="536" height="942" rx="40" fill="${C.paper}"/>
+      <rect x="272" y="600" width="536" height="150" rx="40" fill="${C.green}"/><rect x="272" y="690" width="536" height="60" fill="${C.green}"/>
+      <rect x="470" y="580" width="140" height="14" rx="7" fill="#3b4652"/>
+      <text x="540" y="700" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="40" fill="#fff">${esc(titulo)}</text>`;
+    filas.forEach((n, i) => {
+      const y = 800 + i * 150, c = eBack(prog(t, 0.6 + i * 0.4, 0.35));
+      f += `<rect x="304" y="${y}" width="104" height="104" rx="16" fill="${colores[i % colores.length]}"/><circle cx="356" cy="${y + 52}" r="20" fill="#fff" opacity=".35"/>
+        <text x="436" y="${y + 66}" font-family="Inter, sans-serif" font-weight="700" font-size="40" fill="${C.ink}">${esc(n)}</text>
+        <g transform="translate(748 ${y + 52}) scale(${Math.max(0, c)})"><circle r="26" fill="${C.orange}"/><path d="M-12 0 l8 10 l16 -20" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <rect x="304" y="${y + 126}" width="472" height="3" fill="#c5cfc2"/>`;
+    });
+    f += `<rect x="304" y="${810 + filas.length * 150}" width="300" height="26" rx="10" fill="#c5cfc2"/><rect x="304" y="${856 + filas.length * 150}" width="200" height="26" rx="10" fill="#c5cfc2"/>`;
+    return `<rect width="${W}" height="${H}" fill="${C.night2}"/><g transform="translate(540 1070) scale(${sc}) translate(-540 -1070)" opacity="${Math.min(1, a)}">${f}</g>`
+      + texto([l1, { s: l2, fill: C.orange }].filter(x => (x.s || x)), { y: 320, size: 92, t, t0: 0.3 })
+      + rotulo('con CentralMIP', { y: 1720, size: 50, t, t0: 0.8 });
+  }
+
   /* Compone el cuadro en el tiempo t con fundido entre escenas. */
   function frame(video, t) {
     const X = 0.4; let acc = 0, out = '';
@@ -163,6 +186,6 @@ const M = (() => {
   }
   const duracion = v => v.escenas.reduce((a, e) => a + e.dur, 0);
 
-  return { estado, frameEscena, W, H, C, clamp, lerp, prog, eOut, eInOut, eBack, rnd, esc, pop, texto, rotulo, tarjetaDia, cucaracha, cocina, cierre, frame, duracion };
+  return { reporte, estado, frameEscena, W, H, C, clamp, lerp, prog, eOut, eInOut, eBack, rnd, esc, pop, texto, rotulo, tarjetaDia, cucaracha, cocina, cierre, frame, duracion };
 })();
 if (typeof module !== 'undefined') module.exports = M;

@@ -1,5 +1,6 @@
 /* Video: tratamiento de termita de madera seca por inyección en madera (A&C).
    Sigue la pauta de 10 escenas entregada por Francisco (ver README de videos).
+   Sin comparación con termita subterránea (se quitó a pedido de Francisco).
    No mostrar: inyección en muros, fungicidas/cebos/aspersión, termitas saliendo del suelo,
    túneles de barro asociados a madera seca, plazos de garantía, obreras con ojos. */
 const VIDEO = (() => {
@@ -172,31 +173,6 @@ const VIDEO = (() => {
         w += `<g transform="translate(${x} ${y - (1 - eOut(a)) * 120}) rotate(${rnd(i + 9) * 180 - 90 + (1 - a) * 60}) scale(${k})" opacity="${a}"><ellipse cx="2" cy="5" rx="58" ry="15" fill="#000" opacity=".1"/><ellipse rx="58" ry="15" fill="#fff" fill-opacity=".62" stroke="#b9a777" stroke-width="2.5"/><path d="M-56 0 H52 M-40 -5 Q0 -12 44 -4 M-40 5 Q0 11 44 4" stroke="#b9a777" stroke-width="1.6" fill="none" opacity=".8"/></g>`;
       }
       return cam(w, 540, 960, lerp(1, 1.1, prog(t, 0, 3))) + rotulo('alas sueltas', { y: 1700, size: 56, t, t0: 0.5 });
-    },
-  };
-
-  // 3 — Descartar la otra termita: pantalla dividida.
-  const e3 = {
-    dur: 6.5,
-    draw(t) {
-      // izquierda: madera seca (granitos secos bajo la madera)
-      let L = `<rect x="0" y="0" width="540" height="${H}" fill="#e9dcc0"/>` + madera(0, 760, 540, 240, MAD, 3) + `<rect x="0" y="984" width="540" height="16" fill="#000" opacity=".22"/>` + madera(0, 1400, 540, 520, '#c9a36e', 15, '#a07c4c') + `<rect x="0" y="1400" width="540" height="10" fill="#000" opacity=".2"/><circle cx="270" cy="1000" r="10" fill="#1c1108"/>`;
-      const k = eOut(prog(t, 0.6, 2.2));
-      for (let i = 0; i < 6; i++) { const u = (t * 1.3 + i / 6) % 1; if (t > 0.5 && t < 3) L += `<ellipse cx="${270 + (rnd(i) - 0.5) * 30}" cy="${1010 + u * u * 380}" rx="7" ry="4.3" fill="${GRAN}"/>`; }
-      L += monton(270, 1400, 90, 240, 78, k, 11);
-      // derecha: subterránea (túneles de barro en un muro)
-      let R = `<rect x="540" y="0" width="540" height="${H}" fill="#b8b3a8"/>`;
-      for (let i = 0; i < 80; i++) R += `<circle cx="${540 + rnd(i) * 540}" cy="${rnd(i + 300) * 1500}" r="${2 + rnd(i + 8) * 5}" fill="${rnd(i + 2) > 0.5 ? '#a39e93' : '#c9c4b9'}"/>`;
-      const g = eOut(prog(t, 0.8, 2.4));
-      ['M740 1500 C720 1340 790 1250 760 1100 S820 900 780 760 S760 640 790 560', 'M760 1100 C860 1040 900 960 930 850', 'M960 1500 C990 1380 930 1300 970 1180'].forEach(d => {
-        R += `<path d="${d}" pathLength="1" stroke-dasharray="${g} 1" fill="none" stroke="#5f3f24" stroke-width="40" stroke-linecap="round"/><path d="${d}" pathLength="1" stroke-dasharray="${g} 1" fill="none" stroke="#86603a" stroke-width="27" stroke-linecap="round"/>`;
-      });
-      R += `<rect x="540" y="1500" width="540" height="420" fill="#6b4a2f"/><rect x="540" y="1490" width="540" height="30" fill="#4f9a45"/>`;
-      return L + R + `<rect x="534" y="0" width="12" height="${H}" fill="#fff"/>` + velo(700, 0.9)
-        + texto(['primero la especie,', { s: 'después el tratamiento', fill: C.orange }], { y: 320, size: 78, t, t0: 3.6 })
-        + rotulo('madera seca', { x: 270, y: 1640, size: 44, t, t0: 1.2 })
-        + rotulo('subterránea', { x: 810, y: 1640, size: 44, t, t0: 1.9, color: '#aab5a7' })
-        + texto(['otro tratamiento'], { x: 810, y: 1752, size: 42, weight: 700, t, t0: 2.3, fijo: true });
     },
   };
 
@@ -379,25 +355,11 @@ const VIDEO = (() => {
     },
   };
 
-  // 9 — Registro: ficha con piezas tratadas, producto y fecha.
-  const e9 = {
-    dur: 4.8,
-    draw(t) {
-      const a = eBack(prog(t, 0.2, 0.5));
-      let f = `<rect x="150" y="620" width="780" height="900" rx="26" fill="#000" opacity=".3" transform="translate(14 18)"/><rect x="150" y="620" width="780" height="900" rx="26" fill="${C.paper}"/><rect x="150" y="620" width="780" height="120" rx="26" fill="${C.green}"/><rect x="150" y="700" width="780" height="40" fill="${C.green}"/><rect x="440" y="590" width="200" height="64" rx="18" fill="#8a9096"/>`;
-      f += linea(540, 700, 'ficha de tratamiento', { anchor: 'middle', size: 46, weight: 800 });
-      f += linea(200, 830, 'PIEZAS TRATADAS', { size: 30, weight: 800, fill: '#556054' });
-      ['viga', 'marco', 'mueble'].forEach((n, i) => {
-        const c = eBack(prog(t, 1.0 + i * 0.5, 0.35)), y = 900 + i * 86;
-        f += `<rect x="200" y="${y - 44}" width="56" height="56" rx="10" fill="none" stroke="#556054" stroke-width="5"/><path d="M210 ${y - 16} l14 16 l26 -34" fill="none" stroke="${C.orange}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="${Math.min(1, c)}"/>` + linea(290, y, n, { size: 46, fill: C.ink, weight: 700 });
-      });
-      [['PRODUCTO', 1210, 2.6], ['FECHA', 1360, 3.1]].forEach(([n, y, t0]) => {
-        f += linea(200, y, n, { size: 30, weight: 800, fill: '#556054' }) + `<rect x="200" y="${y + 24}" width="${560 * eOut(prog(t, t0, 0.5))}" height="34" rx="10" fill="#c5cfc2"/>`;
-      });
-      return `<rect width="${W}" height="${H}" fill="${C.night2}"/><g transform="translate(540 1070) scale(${lerp(0.8, 1, a)}) translate(-540 -1070)" opacity="${Math.min(1, a)}">${f}</g>`
-        + texto(['cada pieza tratada', { s: 'queda registrada', fill: C.orange }], { y: 320, size: 88, t, t0: 0.8 });
-    },
-  };
+  // Reporte digital con CentralMIP tras la inspección.
+  const eRep = { dur: 3.2, draw: t => M.reporte(t, { titulo: 'reporte de inspección', l1: 'reporte digital', l2: 'de la inspección', filas: ['viga', 'marco', 'mueble'], colores: ['#b98654', '#a87648', '#9c6b3f'] }) };
+
+  // 9 — Registro: terminado el servicio, reporte digital con las piezas tratadas.
+  const e9 = { dur: 4.2, draw: t => M.reporte(t, { titulo: 'reporte de servicio', l1: 'cada pieza tratada', l2: 'queda registrada', filas: ['viga', 'marco', 'mueble'], colores: ['#b98654', '#a87648', '#9c6b3f'] }) };
 
   // 10a — Verificación: se barre, pasa el tiempo; si aparecen granitos nuevos, se reinyecta por el mismo tarugo.
   const MESES = ['mes 1', 'mes 2', 'mes 3', 'mes 4', 'mes 5', 'mes 6'];
@@ -461,7 +423,7 @@ const VIDEO = (() => {
 
   return {
     nombre: 'termitas-madera-seca',
-    clips: ['01-lo-que-no-se-ve', '02a-granitos', '02b-sonido-hueco', '02c-alas', '03-descartar-subterranea', '04-mapear-piezas', '05-perforacion', '06-tarugo', '07a-valvula', '07b-liquido-a-la-colonia', '08-cierre-pieza', '09-registro', '10a-verificacion', '10b-prevencion', 'cierre'],
-    escenas: [e1, e2a, e2b, e2c, e3, e4, e5, e6, e7a, e7b, e8, e9, e10a, e10b, fin],
+    clips: ['01-lo-que-no-se-ve', '02a-granitos', '02b-sonido-hueco', '02c-alas', '04-mapear-piezas', '04b-reporte-inspeccion', '05-perforacion', '06-tarugo', '07a-valvula', '07b-liquido-a-la-colonia', '08-cierre-pieza', '09-registro', '10a-verificacion', '10b-prevencion', 'cierre'],
+    escenas: [e1, e2a, e2b, e2c, e4, eRep, e5, e6, e7a, e7b, e8, e9, e10a, e10b, fin],
   };
 })();

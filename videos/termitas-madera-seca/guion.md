@@ -8,7 +8,7 @@
 
 | Palabras habladas | Duración a 125 ppm | Cuándo publicar |
 |---|---|---|
-| 317 | 2:32 | por definir |
+| 311 | 2:29 | por definir |
 
 ---
 
@@ -22,13 +22,9 @@
 
 "¿Cómo se nota, entonces? En la madera se abre un orificio, salen unos granitos y se vuelve a cerrar. Granitos bajo una pieza: colonia activa en esa pieza. También son señales la madera que suena hueca al golpearla y las alas sueltas junto a una ventana."
 
-**[Escena 3 — pantalla dividida: granitos / túneles de barro]**
+**[Escena 4 — plano de la casa, piezas marcadas, una tachada; teléfono con el reporte de inspección]**
 
-"Si en cambio hay túneles de barro en un muro, es termita subterránea, y lleva otro tratamiento. Primero la especie, después el tratamiento."
-
-**[Escena 4 — plano de la casa, piezas marcadas, una tachada]**
-
-"Se marca cada pieza con actividad, porque puede haber varias colonias en una misma casa. La pieza que ya no cumple su función se reemplaza."
+"Se marca cada pieza con actividad, porque puede haber varias colonias en una misma casa. La pieza que ya no cumple su función se reemplaza. La inspección queda en un reporte digital, hecho con CentralMIP."
 
 **[Escena 5 — orificios en zigzag; corte transversal con la cota de 2/3]**
 
@@ -50,9 +46,9 @@
 
 "El tarugo queda a ras de la madera, con un tapón que permite reinyectar o con un tarugo de haya que lo oculta en forma definitiva. Encima se puede pintar o barnizar."
 
-**[Escena 9 — ficha de registro]**
+**[Escena 9 — teléfono con el reporte de servicio]**
 
-"Cada pieza tratada queda registrada."
+"Terminado el servicio, cada pieza tratada queda registrada en otro reporte digital."
 
 **[Escena 10a — escoba, calendario, reinyección]**
 
@@ -86,15 +82,13 @@
 
 ## TEXTO EN PANTALLA
 
-Los de la pauta, sin cambios: "la colonia vive dentro de la madera" · "granitos = colonia activa en esa pieza" · "primero la especie, después el tratamiento" · "puede haber varias colonias en una misma casa" · "hasta 2/3 del espesor" · "tarugo con válvula antirretorno" · "deja entrar, no deja salir" · "termiticida con registro ISP" · "se puede pintar o barnizar encima" · "cada pieza tratada queda registrada" · "sin granitos nuevos = sin actividad".
+Los de la pauta, sin cambios: "la colonia vive dentro de la madera" · "granitos = colonia activa en esa pieza" · "puede haber varias colonias en una misma casa" · "hasta 2/3 del espesor" · "tarugo con válvula antirretorno" · "deja entrar, no deja salir" · "termiticida con registro ISP" · "se puede pintar o barnizar encima" · "cada pieza tratada queda registrada" · "sin granitos nuevos = sin actividad".
 
 ---
 
 ## CAPTION
 
 ¿Encontraste un montoncito de granitos bajo un mueble, un marco o una viga? Mándanos una foto y te decimos qué es.
-
-Lo primero es saber qué termita es, porque de eso depende el tratamiento.
 
 📍 Región de Valparaíso
 💬 +56 9 8154 4036
@@ -117,8 +111,6 @@ La cita es contra la pauta, no contra la fuente primaria: no tuve a la vista la 
 | "Granitos bajo una pieza: colonia activa en esa pieza" | "granitos = colonia activa en esa pieza" |
 | "la madera que suena hueca al golpearla" | "Golpe a la madera con el mango de un destornillador: sonido hueco" |
 | "alas sueltas junto a una ventana" | "Alas sueltas junto a una ventana o una luz" |
-| "túneles de barro en un muro, es termita subterránea, y lleva otro tratamiento" | "túneles de barro en un muro → subterránea: otro tratamiento" |
-| "Primero la especie, después el tratamiento" | texto en pantalla, igual |
 | "Se marca cada pieza con actividad… varias colonias en una misma casa" | "Se marca en naranja cada pieza con actividad" · "puede haber varias colonias en una misma casa" |
 | "La pieza que ya no cumple su función se reemplaza" | "tachada con el rótulo 'reemplazar', porque ya no cumple su función" |
 | "se perforan en zigzag, hasta unos dos tercios del espesor. La viga gruesa, por ambos lados" | "Orificios en patrón de rombo o zigzag, hasta unos dos tercios del espesor. En la viga gruesa, perforación por ambos lados" |
@@ -135,12 +127,16 @@ La cita es contra la pauta, no contra la fuente primaria: no tuve a la vista la 
 - "toda su colonia" (escena 1): la pauta dice "una colonia pequeña adentro" y "la colonia vive dentro de la madera". Redacción mía; si prefieres, "y una colonia pequeña".
 - "Las demás se perforan" (escena 5): une la escena 4 con la 5. Inferencia mía: las piezas con actividad que no se reemplazan son las que se tratan.
 - "Por ese tarugo se inyecta" (escena 7a): frase de enlace.
-- Caption, "de eso depende el tratamiento": deducido de "primero la especie, después el tratamiento".
+
+### Cambios pedidos por Francisco (15-nov-2026)
+
+- Se eliminó la escena 3 (comparación con termita subterránea) del video, del guion, del texto en pantalla y del caption: el video trata solo de madera seca.
+- Se agregó el reporte digital con CentralMIP en la inspección y al terminar el servicio. Las dos frases ("La inspección queda en un reporte digital, hecho con CentralMIP" y "Terminado el servicio… en otro reporte digital") son indicación directa de Francisco, no cita de la pauta.
 
 ### Pendientes
 
 - **Fuente primaria.** Falta la cita con página de la ficha A&C, el catálogo MABI y los apuntes, sobre todo para "2/3 del espesor", las medidas de los tarugos y "sin granitos nuevos = sin actividad".
-- **Duración.** El guion pide 2:32 y la animación dura 1:50; la pauta apuntaba a ~90 s (unas 190 palabras). Diez escenas no caben en 90 s a 125 palabras por minuto. O se alarga la animación a la voz, o se sacan bloques. Los que menos pesan en el relato: prevención (36 palabras), el detalle de tapón y tarugo de haya (32) y las señales secundarias de la escena 2 (sonido hueco y alas, 20).
+- **Duración.** El guion pide 2:29 y la animación dura 1:46; la pauta apuntaba a ~90 s (unas 190 palabras). Diez escenas no caben en 90 s a 125 palabras por minuto. O se alarga la animación a la voz, o se sacan bloques. Los que menos pesan en el relato: prevención (36 palabras), el detalle de tapón y tarugo de haya (32) y las señales secundarias de la escena 2 (sonido hueco y alas, 20).
 - **Cierre.** Cambiado a pedido de Francisco: pregunta al espectador, "solución real" y llamada a la acción por WhatsApp (reemplaza el cierre estándar "Soy Francisco Aracena…").
 - **Teléfono.** Sigue en +56 9 8154 4036, pendiente de confirmar.
 

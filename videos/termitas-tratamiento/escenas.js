@@ -505,12 +505,16 @@ const VIDEO = (() => {
     },
   };
 
+  // Reporte digital con CentralMIP: en la inspección y terminado el servicio.
+  const repIns = { dur: 3.2, draw: t => M.reporte(t, { titulo: 'reporte de inspección', l1: 'reporte digital', l2: 'de la inspección', filas: ['canales de barro', 'madera comida', 'alas'], colores: ['#86603a', '#b98654', '#ece5d6'] }) };
+  const repFin = { dur: 3.2, draw: t => M.reporte(t, { titulo: 'reporte de servicio', l1: 'reporte digital', l2: 'del servicio', filas: ['perforación', 'inyección al suelo', 'barrera no repelente'], colores: ['#c9c6bd', '#2ec4b6', '#1f6b34'] }) };
+
   const LOGO = (typeof window !== 'undefined' && window.LOGO_HREF) || '../img/logo-ayc.png';
   const fin = { dur: 7.5, draw: t => cierre(t, LOGO) };
 
   return {
     nombre: 'termitas-tratamiento',
-    clips: ['gancho', 'dron-llegada', 'inspeccion', 'canales-de-barro', 'madera-comida', 'alas', 'perforacion-aerea', 'taladro-10cm', 'equipo-100L', 'gatillo', 'corte-suelo-40cm', 'barrera', 'subsuelo-muerte-en-cadena', 'subida-casa-sana', 'dron-salida', 'cierre'],
-    escenas: [gancho, dron, inspeccion, barro, madera, alas, perforacion, taladro, equipo, gatillo, corte, barrera, subsuelo, subida, salida, fin],
+    clips: ['gancho', 'dron-llegada', 'inspeccion', 'canales-de-barro', 'madera-comida', 'alas', 'reporte-inspeccion', 'perforacion-aerea', 'taladro-10cm', 'equipo-100L', 'gatillo', 'corte-suelo-40cm', 'barrera', 'subsuelo-muerte-en-cadena', 'subida-casa-sana', 'dron-salida', 'reporte-servicio', 'cierre'],
+    escenas: [gancho, dron, inspeccion, barro, madera, alas, repIns, perforacion, taladro, equipo, gatillo, corte, barrera, subsuelo, subida, salida, repFin, fin],
   };
 })();

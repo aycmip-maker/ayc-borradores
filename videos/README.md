@@ -70,6 +70,10 @@ Ilustrativo, por revisar contra la ficha y el catálogo MABI (no los tuve a la v
 - El calendario muestra "mes 1" a "mes 6" solo para indicar que pasa el tiempo; la pauta dice "varios meses", sin cifra.
 - La ficha de registro no muestra producto ni fecha reales.
 
-Respeta la lista "no mostrar": sin inyección en muros, sin fungicidas, cebos ni aspersión, sin termitas saliendo del suelo, sin plazos de garantía, sin dosis, y las termitas no tienen ojos. Los túneles de barro aparecen solo en la escena 3, rotulados como termita subterránea.
+Respeta la lista "no mostrar": sin inyección en muros, sin fungicidas, cebos ni aspersión, sin termitas saliendo del suelo, sin plazos de garantía, sin dosis, y las termitas no tienen ojos. La comparación con termita subterránea (escena 3) se eliminó a pedido de Francisco: no aparecen túneles de barro.
 
 Dura 106 s y la pauta pedía ~90 s: se ajusta al tener la locución.
+
+## Reporte digital con CentralMIP
+
+Los dos videos de termitas muestran un reporte digital en la inspección y al terminar el servicio (indicación de Francisco). La pantalla del teléfono es genérica: no imita la interfaz real de CentralMIP.
