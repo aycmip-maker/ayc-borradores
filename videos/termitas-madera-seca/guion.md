@@ -136,7 +136,7 @@ La cita es contra la pauta, no contra la fuente primaria: no tuve a la vista la 
 ### Pendientes
 
 - **Fuente primaria.** Falta la cita con página de la ficha A&C, el catálogo MABI y los apuntes, sobre todo para "2/3 del espesor", las medidas de los tarugos y "sin granitos nuevos = sin actividad".
-- **Duración.** El guion pide 2:29 y la animación dura 1:46; la pauta apuntaba a ~90 s (unas 190 palabras). Diez escenas no caben en 90 s a 125 palabras por minuto. O se alarga la animación a la voz, o se sacan bloques. Los que menos pesan en el relato: prevención (36 palabras), el detalle de tapón y tarugo de haya (32) y las señales secundarias de la escena 2 (sonido hueco y alas, 20).
+- **Duración.** El guion pide 2:29 y la animación dura 1:46 (sin contar el cierre); la pauta apuntaba a ~90 s (unas 190 palabras). Diez escenas no caben en 90 s a 125 palabras por minuto. O se alarga la animación a la voz, o se sacan bloques. Los que menos pesan en el relato: prevención (36 palabras), el detalle de tapón y tarugo de haya (32) y las señales secundarias de la escena 2 (sonido hueco y alas, 20).
 - **Cierre.** Cambiado a pedido de Francisco: pregunta al espectador, "solución real" y llamada a la acción por WhatsApp (reemplaza el cierre estándar "Soy Francisco Aracena…").
 - **Teléfono.** Sigue en +56 9 8154 4036, pendiente de confirmar.
 
