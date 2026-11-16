@@ -128,11 +128,12 @@ const M = (() => {
   }
 
   /* Cierre: pregunta al espectador, promesa y llamada a la acción con contacto. */
-  function cierre(t, logoHref) {
-    const T = t - 2.9, a = eOut(prog(T, 0, 0.5));
-    const pill = pop(T, 1.3);
+  function cierre(t, logoHref, o = {}) {
+    const { tq = 2.9, tp = 1.3 } = o; // tq: cuánto dura la pregunta; tp: cuándo aparece el botón de WhatsApp
+    const T = t - tq, a = eOut(prog(T, 0, 0.5));
+    const pill = pop(T, tp);
     return `<rect width="${W}" height="${H}" fill="${C.night}"/>
-      ${texto(['¿has intentado', 'erradicarlas', { s: 'y siguen ahí?', fill: C.orange }], { y: 800, size: 116, lh: 1.16, t, t0: 0.2, t1: 2.8, fijo: true })}
+      ${texto(['¿has intentado', 'erradicarlas', { s: 'y siguen ahí?', fill: C.orange }], { y: 800, size: 116, lh: 1.16, t, t0: 0.2, t1: tq - 0.1, fijo: true })}
       <circle cx="540" cy="820" r="${640 * a}" fill="${C.night2}"/>
       <g transform="translate(540 500) scale(${lerp(0.7, 1, eBack(a))})" opacity="${a}">
         <rect x="-220" y="-100" width="440" height="200" rx="32" fill="#fff"/>
@@ -141,8 +142,8 @@ const M = (() => {
       ${pill.o > 0 ? `<g transform="translate(540 1130) scale(${pill.s})" opacity="${pill.o}" filter="url(#sombra)">
         <rect x="-400" y="-70" width="800" height="140" rx="70" fill="${C.green}"/>
         <text y="22" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="60" fill="#fff">escríbenos por WhatsApp</text></g>` : ''}
-      ${texto([{ s: '+56 9 8154 4036', fill: C.orange, size: 88 }, { s: 'www.aycmip.cl' }, { s: 'Región de Valparaíso' }], { y: 1320, size: 56, lh: 1.7, t: T, t0: 1.7, weight: 700, fijo: true })}
-      ${texto(['Resolución sanitaria Nº 402/2020 · SEREMI de Salud Valparaíso'], { y: 1640, size: 30, t: T, t0: 2.2, weight: 600, fill: '#aab5a7', sombra: false, fijo: true })}`;
+      ${texto([{ s: '+56 9 8154 4036', fill: C.orange, size: 88 }, { s: 'www.aycmip.cl' }, { s: 'Región de Valparaíso' }], { y: 1320, size: 56, lh: 1.7, t: T, t0: tp + 0.4, weight: 700, fijo: true })}
+      ${texto(['Resolución sanitaria Nº 402/2020 · SEREMI de Salud Valparaíso'], { y: 1640, size: 30, t: T, t0: tp + 0.9, weight: 600, fill: '#aab5a7', sombra: false, fijo: true })}`;
   }
 
   /* Reporte digital en un teléfono (sin imitar la interfaz real de CentralMIP).
@@ -158,7 +159,7 @@ const M = (() => {
     filas.forEach((n, i) => {
       const y = 800 + i * 150, c = eBack(prog(t, 0.6 + i * 0.4, 0.35));
       f += `<rect x="304" y="${y}" width="104" height="104" rx="16" fill="${colores[i % colores.length]}"/><circle cx="356" cy="${y + 52}" r="20" fill="#fff" opacity=".35"/>
-        <text x="436" y="${y + 66}" font-family="Inter, sans-serif" font-weight="700" font-size="40" fill="${C.ink}">${esc(n)}</text>
+        <text x="436" y="${y + 64}" font-family="Inter, sans-serif" font-weight="700" font-size="${Math.min(40, 270 / (n.length * 0.56))}" fill="${C.ink}">${esc(n)}</text>
         <g transform="translate(748 ${y + 52}) scale(${Math.max(0, c)})"><circle r="26" fill="${C.orange}"/><path d="M-12 0 l8 10 l16 -20" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
         <rect x="304" y="${y + 126}" width="472" height="3" fill="#c5cfc2"/>`;
     });

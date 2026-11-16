@@ -77,3 +77,7 @@ Dura 106 s y la pauta pedía ~90 s: se ajusta al tener la locución.
 ## Reporte digital con CentralMIP
 
 Los dos videos de termitas muestran un reporte digital en la inspección y al terminar el servicio (indicación de Francisco). La pantalla del teléfono es genérica: no imita la interfaz real de CentralMIP.
+
+## Locución sincronizada
+
+`termitas-tratamiento/escenas.js` trae la locución (`VOZ`): cada línea con el segundo de su escena en que empieza. `node videos/tiempos.js <video> [ppm]` arma la tabla de sincronización, avisa si una línea no cabe en su escena y escribe `voz.srt` y `voz.txt` (un párrafo por escena, para generar la voz con una pausa entre escenas).

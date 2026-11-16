@@ -190,7 +190,7 @@ const VIDEO = (() => {
   ];
   const enRuta = (r, u) => { const n = r.length, k = Math.min(n - 1, Math.floor(u * n)), g = r[k]; return qb(g[0], g[1], g[2], u * n - k); };
   const gancho = {
-    dur: 5,
+    dur: 6.6,
     draw(t) {
       let w = casa(t);
       RUTAS.forEach((r, k) => {
@@ -199,16 +199,16 @@ const VIDEO = (() => {
           w += termita(x, y + (i % 2 ? 5 : -5), Math.atan2(y2 - y, x2 - x) * 180 / Math.PI, 0.8, t, { seed: i + k * 9 });
         }
       });
-      const p = eInOut(prog(t, 1.1, 1.3)), q = prog(t, 2.4, 2.6);
+      const p = eInOut(prog(t, 2.6, 1.3)), q = prog(t, 3.9, 2.7);
       return cam(w, lerp(540, 300, p), lerp(790, 1640, p) - q * 40, lerp(1.22, 1.75, p) + q * 0.15) + velo(640, 0.85)
-        + texto(['por fuera,', 'todo se ve bien'], { y: 330, size: 96, t, t0: 0.2, t1: 1.5 })
-        + texto([{ s: 'por debajo,' }, { s: 'ya llegaron', fill: C.orange }], { y: 330, size: 108, t, t0: 2.3 });
+        + texto(['por fuera,', 'todo se ve bien'], { y: 330, size: 96, t, t0: 0.2, t1: 3.1 })
+        + texto([{ s: 'por debajo,' }, { s: 'ya llegaron', fill: C.orange }], { y: 330, size: 108, t, t0: 3.2 });
     },
   };
 
   // 1 — Dron: llegada a la casa.
   const dron = {
-    dur: 5.5,
+    dur: 6.1,
     draw(t) {
       const p = eInOut(prog(t, 0, 5.5));
       return cam(aerea(t), 1000, lerp(1180, 1020, p), lerp(0.62, 1.0, p), lerp(-14, 5, p)) + velo(760)
@@ -240,7 +240,7 @@ const VIDEO = (() => {
 
   // 3a — Primer plano: canales de barro en el sobrecimiento.
   const barro = {
-    dur: 3.2,
+    dur: 3.5,
     draw(t) {
       const z = lerp(1.0, 1.12, prog(t, 0, 3.2));
       let w = `<rect x="-100" y="-100" width="1280" height="2120" fill="#b8b3a8"/>`;
@@ -289,7 +289,7 @@ const VIDEO = (() => {
 
   // 3c — Primer plano: alas junto a la ventana.
   const alas = {
-    dur: 3.2,
+    dur: 4.4,
     draw(t) {
       const z = lerp(1.0, 1.1, prog(t, 0, 3.2));
       let w = `<rect x="-100" y="-100" width="1280" height="2120" fill="#f4e9d2"/>`;
@@ -310,9 +310,9 @@ const VIDEO = (() => {
 
   // 4a — Dron: perforaciones por todo el perímetro exterior.
   const perforacion = {
-    dur: 5.5,
+    dur: 6.9,
     draw(t) {
-      const p = prog(t, 0, 5.5), h = prog(t, 0.6, 4.2);
+      const p = prog(t, 0, 6.9), h = prog(t, 0.6, 5.6);
       let w = aerea(t, { hoyos: h });
       const i = Math.min(PERIM.length - 1, Math.floor(h * PERIM.length)), [x, y] = PERIM[i];
       if (h > 0 && h < 1) w += `<g transform="translate(${x + 34} ${y + 30})"><ellipse cx="6" cy="10" rx="34" ry="26" fill="#000" opacity=".25"/><ellipse rx="30" ry="24" fill="#eef1f2"/><circle r="15" fill="#f2b705"/></g>`;
@@ -323,7 +323,7 @@ const VIDEO = (() => {
 
   // 4b — Primer plano: el taladro, a no más de 10 cm de la pared.
   const taladro = {
-    dur: 4,
+    dur: 4.9,
     draw(t) {
       const gy = 1330, hx = 400, d = eInOut(prog(t, 0.5, 1.9)) * 250 - eInOut(prog(t, 2.4, 0.6)) * 900;
       const vib = t > 0.5 && t < 2.4 ? Math.sin(t * 90) * 4 : 0;
@@ -347,7 +347,7 @@ const VIDEO = (() => {
 
   // 5a — Plano general: aplicador, lanza, manguera y equipo de 100 litros.
   const equipo = {
-    dur: 4.5,
+    dur: 10.5,
     draw(t) {
       const gy = 1420, p = prog(t, 0, 4.5);
       let w = `<defs><linearGradient id="cielo2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ec1ee"/><stop offset="1" stop-color="#d4eefb"/></linearGradient></defs><rect x="-300" y="-300" width="1700" height="2500" fill="url(#cielo2)"/>`;
@@ -366,8 +366,11 @@ const VIDEO = (() => {
       // lanza y aplicador (mira hacia la casa)
       w += `<rect x="188" y="${gy - 330}" width="12" height="330" fill="#aab0b3"/><rect x="176" y="${gy - 390}" width="36" height="74" rx="10" fill="#27323b"/><rect x="150" y="${gy - 372}" width="90" height="20" rx="8" fill="#27323b"/>`;
       w += persona(400, gy + 4, 0.92, t, { tipo: 'aplicador', flip: true, mano: [205, -385], mano2: [190, -330] });
-      return cam(w, lerp(520, 470, p), lerp(1020, 1080, p), lerp(0.9, 1.04, p)) + velo(620, 0.8)
-        + paso(3, 'inyección', t) + texto(['equipo de 100 litros, manguera y lanza'], { y: 470, size: 46, weight: 700, t, t0: 0.9 });
+      const k1 = eInOut(prog(t, 5.0, 1.4)), k2 = eInOut(prog(t, 8.2, 1.8));
+      const cx = lerp(lerp(400, 820, k1), 520, k2), cy = lerp(lerp(1130, 1180, k1), 1060, k2), z = lerp(lerp(1.3 + 0.05 * prog(t, 0, 5), 1.25, k1), 0.94, k2);
+      return cam(w, cx, cy, z) + velo(620, 0.8)
+        + paso(3, 'inyección', t) + texto(['traje · mascarilla', 'zapatos de seguridad'], { y: 1640, size: 56, weight: 800, t, t0: 1.0, t1: 5.0 })
+        + texto(['equipo de 100 litros, manguera y lanza'], { y: 470, size: 46, weight: 700, t, t0: 5.3 });
     },
   };
 
@@ -392,7 +395,7 @@ const VIDEO = (() => {
 
   // 5c — El suelo se corta: el líquido ingresa al subsuelo (lanza a 40 cm).
   const corte = {
-    dur: 7.5,
+    dur: 8.5,
     draw(t) {
       const sy = 760, K = 8, hx = 300 + 9 * K, tip = sy + 40 * K;
       let w = `<rect x="-100" y="-100" width="1280" height="${sy + 100}" fill="#cfe9f7"/><ellipse cx="820" cy="${sy}" rx="460" ry="120" fill="#57a651"/>`;
@@ -421,28 +424,28 @@ const VIDEO = (() => {
       // lanza entrando por la perforación
       const ins = eInOut(prog(t, 1.3, 1.0)), ly = lerp(sy - 400, tip, ins);
       w += `<rect x="${hx - 6}" y="${ly - 1200}" width="12" height="1200" fill="#c9d0d3"/><polygon points="${hx - 6},${ly} ${hx + 6},${ly} ${hx},${ly + 18}" fill="#8a9096"/>`;
-      w += cota(760, sy + 22, 760, tip, '40 cm', prog(t, 2.3, 0.3), 150, 0);
+      w += cota(760, sy + 22, 760, tip, '40 cm', prog(t, 6.2, 0.3), 150, 0);
       return cam(w, 540, lerp(900, 1010, eInOut(prog(t, 0.4, 2))), 1) + velo(600, 0.85)
-        + texto(['el suelo, en corte'], { y: 330, size: 84, t, t0: 0.4, t1: 2.8 })
-        + texto(['el líquido ingresa', { s: 'al subsuelo', fill: TEAL }], { y: 300, size: 96, t, t0: 2.9 });
+        + texto(['el suelo, en corte'], { y: 330, size: 84, t, t0: 0.4, t1: 3.6 })
+        + texto(['el líquido ingresa', { s: 'al subsuelo', fill: TEAL }], { y: 300, size: 96, t, t0: 3.8 });
     },
   };
 
   // 6 — Plano general en corte: la barrera rodea los cimientos.
   const barrera = {
-    dur: 4.5,
+    dur: 5.5,
     draw(t) {
       const p = eInOut(prog(t, 0, 4.5));
       return cam(casa(t, { barrera: eOut(prog(t, 0.3, 1.6)) }), 540, lerp(1330, 1420, p), lerp(0.94, 1.08, p)) + velo(620, 0.85)
         + texto(['una barrera', { s: 'no repelente', fill: TEAL }], { y: 300, size: 104, t, t0: 0.4 })
-        + rotulo('contra las termitas', { y: 1720, size: 46, t, t0: 1.6, color: TEAL });
+        + rotulo('contra las termitas', { y: 1720, size: 46, t, t0: 3.6, color: TEAL });
     },
   };
 
   // 7 — Zoom al subsuelo: no la detectan, se la traspasan, muerte en cadena.
   const N_A = 6, N_B = 18;
   const subsuelo = {
-    dur: 11,
+    dur: 11.8,
     draw(t) {
       let w = `<rect x="-600" y="-200" width="2400" height="2400" fill="${SUELO2}"/>` + piedras(150, -500, 0, 2200, 1920, 31);
       // cámara del nido (izquierda), galerías y cimiento (derecha)
@@ -479,9 +482,9 @@ const VIDEO = (() => {
       const cx = lerp(lerp(700, 620, eInOut(prog(t, 0, 3))), 250, eInOut(prog(t, 3.6, 2.2)));
       const z = lerp(lerp(0.7, 1.25, eOut(prog(t, 0, 1.2))), 1.5, eInOut(prog(t, 3.6, 2.2)));
       return cam(w, cx, 1130, z) + velo(640, 0.9)
-        + texto(['las termitas', { s: 'no la detectan', fill: TEAL }], { y: 300, size: 100, t, t0: 0.5, t1: 3.9 })
-        + texto(['se van pasando', { s: 'el producto', fill: TEAL }, 'entre ellas'], { y: 260, size: 92, t, t0: 4.0, t1: 7.5 })
-        + texto([{ s: 'muerte', fill: C.white }, { s: 'en cadena', fill: C.orange }], { y: 300, size: 124, t, t0: 7.6 })
+        + texto(['las termitas', { s: 'no la detectan', fill: TEAL }], { y: 300, size: 100, t, t0: 0.5, t1: 4.3 })
+        + texto(['se van pasando', { s: 'el producto', fill: TEAL }, 'entre ellas'], { y: 260, size: 92, t, t0: 4.4, t1: 7.9 })
+        + texto([{ s: 'muerte', fill: C.white }, { s: 'en cadena', fill: C.orange }], { y: 300, size: 124, t, t0: 8.0 })
         + rotulo('barrera química', { x: 760, y: 1700, size: 44, t, t0: 0.9, t1: 3.6, color: TEAL });
     },
   };
@@ -506,14 +509,38 @@ const VIDEO = (() => {
   };
 
   // Reporte digital con CentralMIP: en la inspección y terminado el servicio.
-  const repIns = { dur: 3.2, draw: t => M.reporte(t, { titulo: 'reporte de inspección', l1: 'reporte digital', l2: 'de la inspección', filas: ['canales de barro', 'madera comida', 'alas'], colores: ['#86603a', '#b98654', '#ece5d6'] }) };
-  const repFin = { dur: 3.2, draw: t => M.reporte(t, { titulo: 'reporte de servicio', l1: 'reporte digital', l2: 'del servicio', filas: ['perforación', 'inyección al suelo', 'barrera no repelente'], colores: ['#c9c6bd', '#2ec4b6', '#1f6b34'] }) };
+  const repIns = { dur: 5.5, draw: t => M.reporte(t, { titulo: 'reporte de inspección', l1: 'reporte digital', l2: 'de la inspección', filas: ['canales de barro', 'madera comida', 'alas'], colores: ['#86603a', '#b98654', '#ece5d6'] }) };
+  const repFin = { dur: 5.5, draw: t => M.reporte(t, { titulo: 'reporte de servicio', l1: 'reporte digital', l2: 'del servicio', filas: ['perforación', 'inyección', 'barrera'], colores: ['#c9c6bd', '#2ec4b6', '#1f6b34'] }) };
 
   const LOGO = (typeof window !== 'undefined' && window.LOGO_HREF) || '../img/logo-ayc.png';
-  const fin = { dur: 7.5, draw: t => cierre(t, LOGO) };
+  const fin = { dur: 9, draw: t => cierre(t, LOGO, { tq: 3.1, tp: 3.8 }) };
+
+  /* Locución, sincronizada con cada escena: [segundo dentro de la escena, texto].
+     Se calcula a 125 palabras por minuto; videos/tiempos.js genera la tabla y los subtítulos .srt. */
+  const VOZ = {
+    'gancho': [[0.2, 'Por fuera, todo se ve bien.'], [3.2, 'Por debajo, las termitas ya llegaron.']],
+    'dron-llegada': [[0.3, 'Así se trata una casa con termita subterránea, paso a paso.']],
+    'inspeccion': [[0.3, 'Primero, la inspección: se revisan los puntos críticos.']],
+    'canales-de-barro': [[0.2, 'Se ven los canales de barro,']],
+    'madera-comida': [[0.2, 'la madera comida por dentro,']],
+    'alas': [[0.2, 'y las alas sueltas junto a la ventana.']],
+    'reporte-inspeccion': [[0.3, 'La inspección queda en un reporte digital, hecho con CentralMIP.']],
+    'perforacion-aerea': [[0.3, 'Después se perfora todo el perímetro de la casa, por la parte exterior,']],
+    'taladro-10cm': [[0.2, 'a no más de diez centímetros de la pared.']],
+    'equipo-100L': [[0.3, 'El aplicador va con traje, mascarilla y zapatos de seguridad.'], [5.3, 'Usa un equipo de cien litros, con manguera y lanza.']],
+    'gatillo': [[0.2, 'Aprieta el gatillo']],
+    'corte-suelo-40cm': [[0.3, 'con la lanza dentro de la perforación,'], [3.8, 'y el líquido ingresa al subsuelo, a cuarenta centímetros.']],
+    'barrera': [[0.3, 'Así se forma una barrera no repelente contra las termitas.']],
+    'subsuelo-muerte-en-cadena': [[0.4, 'Las termitas pasan por la barrera sin detectarla,'], [4.4, 'se van pasando el producto entre ellas,'], [8.0, 'y eso genera una muerte en cadena.']],
+    'subida-casa-sana': [[1.0, 'Y arriba, la casa queda sana']],
+    'dron-salida': [[0.3, 'y libre de termitas.']],
+    'reporte-servicio': [[0.3, 'Terminado el servicio, el tratamiento queda en otro reporte digital.']],
+    'cierre': [[0.2, '¿Has intentado erradicarlas y siguen ahí?'], [3.4, 'Nosotros te podemos dar la solución real.'], [6.9, 'Escríbenos por WhatsApp.']],
+  };
 
   return {
     nombre: 'termitas-tratamiento',
+    voz: VOZ,
     clips: ['gancho', 'dron-llegada', 'inspeccion', 'canales-de-barro', 'madera-comida', 'alas', 'reporte-inspeccion', 'perforacion-aerea', 'taladro-10cm', 'equipo-100L', 'gatillo', 'corte-suelo-40cm', 'barrera', 'subsuelo-muerte-en-cadena', 'subida-casa-sana', 'dron-salida', 'reporte-servicio', 'cierre'],
     escenas: [gancho, dron, inspeccion, barro, madera, alas, repIns, perforacion, taladro, equipo, gatillo, corte, barrera, subsuelo, subida, salida, repFin, fin],
   };
