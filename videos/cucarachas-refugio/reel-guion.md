@@ -10,7 +10,7 @@
 
 | Palabras habladas | Duración a 125 ppm | Cuándo publicar |
 |---|---|---|
-| 182 | 1:27 | por definir |
+| 200 | 1:36 | por definir |
 
 ---
 
@@ -46,6 +46,10 @@
 
 "¿Has intentado erradicarlas y siguen ahí? Nosotros te podemos dar la solución real. Escríbenos por WhatsApp."
 
+**[Mismo plano, firma]**
+
+"Soy Francisco Aracena, especialista en plagas urbanas, y acá vas a entender cómo funcionan las plagas de verdad."
+
 ---
 
 ## POR QUÉ ESTE ORDEN
@@ -57,7 +61,7 @@ Cada bloque responde la pregunta que deja abierta el anterior:
 3. Sigue creciendo: ≈40 huevos por cápsula → *¿y si les echo aerosol?*
 4. El aerosol no llega al refugio y además las dispersa → *¿entonces cómo se controla?*
 5. Con método, no con un producto: inspección, refugio, especie, medición, y tratar donde viven → *¿y yo qué hago?*
-6. Cierre fijo de Francisco: ¿has intentado erradicarlas y siguen ahí?; solución real; escríbenos.
+6. Cierre: la llamada (¿has intentado erradicarlas y siguen ahí?; solución real; escríbenos) y, como última frase, la firma estándar de Francisco.
 
 El gancho era el dato que en el video animado estaba enterrado en la cuarta escena. No se nombra ningún producto: lo que se ofrece es el método. Tampoco se mencionan garantía, precio ni plan.
 
@@ -83,6 +87,7 @@ Tiempos estimados a 125 ppm; se ajustan a tu voz real.
 | 1:04–1:18 | "Encontrar el refugio, saber qué especie es y medir con trampas cuántas hay. Recién ahí se trata, y se trata donde viven, no donde las ves, hasta la erradicación total." | Clip nuevo `inspeccion` (por crear): linterna que encuentra el refugio, trampa de monitoreo con el conteo, tratamiento dentro del refugio | **el refugio** · **trampas** · **erradicación total** | fuente del monitoreo |
 | 1:18–1:22 | "¿Has intentado erradicarlas y siguen ahí?" | Tú a cámara, zoom in lento | **siguen ahí** | — |
 | 1:22–1:27 | "Nosotros te podemos dar la solución real. Escríbenos por WhatsApp." | Tú a cámara; entra la tarjeta con WhatsApp y web | **solución real** · **WhatsApp** | — |
+| 1:27–1:36 | "Soy Francisco Aracena, especialista en plagas urbanas, y acá vas a entender cómo funcionan las plagas de verdad." | Tú a cámara, plano fijo sin zoom; rótulo con tu nombre | **Francisco Aracena** · **de verdad** | — |
 | +3 s | — | Placa final: logo, +56 9 8154 4036, www.aycmip.cl | — | — |
 
 **Tratamiento general**
@@ -149,7 +154,7 @@ Mándanos una foto y te decimos qué es.
 ### Cambios pedidos por Francisco (19-nov-2026)
 
 - Fuera el gel: el reel no nombra productos. En su lugar va el método de control: inspección, refugio, especie, medición con trampas y tratamiento donde viven.
-- El cierre es fijo y no se toca: "¿Has intentado erradicarlas y siguen ahí? Nosotros te podemos dar la solución real. Escríbenos por WhatsApp." (Lo había reescrito por mi cuenta; se restituyó.)
+- El cierre es fijo y no se toca (confirmado por Francisco): primero la llamada (la pregunta, la solución real y el WhatsApp) y, como última frase, su firma estándar.
 - A&C no vende productos: ninguna frase del reel habla de vender productos, ni para afirmarlo ni para negarlo. "Inspección" y "erradicación total" van en el desarrollo.
 
 ### Pendientes
