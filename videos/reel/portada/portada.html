@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#0f130f}svg{display:block}</style></head><body>
+<div id="l"></div><script src="../../motor.js"></script><script>
+// Portada del reel de cucarachas: fotograma de Francisco + titular + cucarachas del propio video.
+// ?foto=ruta del fotograma
+const foto = new URLSearchParams(location.search).get('foto');
+const { C, cucaracha, rnd } = M, W = 1080, H = 1920;
+const bichos = [[150, 1030, 62, 1.25], [930, 1190, -48, 1.0], [880, 1500, -110, 0.8], [215, 1600, 118, 0.7], [985, 610, -150, 0.5], [1010, 880, -80, 0.6], [70, 1330, 95, 0.5]];
+let b = '';
+bichos.forEach(([x, y, a, s], i) => { b += `<g opacity=".28" transform="translate(14 20)">${cucaracha(x, y, a, s, i * 0.37, { seed: i, color: '#000' })}</g>` + cucaracha(x, y, a, s, i * 0.37, { seed: i }); });
+const t = (y, s, size, fill) => `<text x="540" y="${y}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="${size}" letter-spacing="-3" fill="${fill}" filter="url(#so)">${s}</text>`;
+document.getElementById('l').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+<defs><filter id="so" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".7"/></filter>
+<linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f130f" stop-opacity=".35"/><stop offset=".38" stop-color="#0f130f" stop-opacity="0"/><stop offset=".56" stop-color="#0f130f" stop-opacity=".55"/><stop offset=".78" stop-color="#0f130f" stop-opacity=".93"/><stop offset="1" stop-color="#0f130f" stop-opacity="1"/></linearGradient></defs>
+<image href="${foto}" x="-130" y="-150" width="1340" height="2382" preserveAspectRatio="xMidYMid slice"/>
+<rect width="${W}" height="${H}" fill="url(#g)"/>
+${b}
+<g transform="rotate(-3 540 1300)">
+${t(1215, '¿las ves', 200, '#fff')}
+${t(1395, 'de día?', 200, C.orange)}
+<rect x="150" y="1452" width="780" height="112" rx="22" fill="#fff"/>
+<text x="540" y="1530" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="64" letter-spacing="-1" fill="#141a14">ya no caben escondidas</text>
+</g></svg>`;
+window.LISTO = true;
+</script></body></html>
