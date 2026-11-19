@@ -22,7 +22,7 @@ def palabra(i, w):  # tiempo de inicio de la palabra w dentro de la oración i
 # --- clips sobre la voz: (archivo, desde, hasta)
 clips = [
     (CL + '04-de-dia.mp4', O[1]['a'] - 0.05, O[2]['a'] - 0.05),
-    (CL + '03-refugio.mp4', palabra(4, 'refugio') - 0.1, O[6]['a'] - 0.05),
+    (CL + '03-refugio.mp4', palabra(4, 'refugio') - 0.1, O[6]['a'] - 0.05, 1.4),
     (CL + '02-capsula-40-huevos.mp4', O[8]['a'] - 0.05, O[9]['a'] - 0.05),
     (CL + '05-aerosol.mp4', O[11]['a'] - 0.05, O[12]['a'] - 0.05),
     (V + '/salida/cucarachas-inspeccion-clips-limpios/01-inspeccion.mp4', O[13]['a'] - 0.05, O[15]['a'] - 0.05),
@@ -83,7 +83,7 @@ WrapStyle: 2
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Sub,Inter ExtraBold,76,&H00FFFFFF,&H00FFFFFF,&H70000000,&H90000000,0,0,0,0,100,100,0,0,1,3,4,2,90,90,470,1
+Style: Sub,Inter ExtraBold,84,&H00FFFFFF,&H00FFFFFF,&H70000000,&H90000000,0,0,0,0,100,100,0,0,1,3,4,2,90,90,470,1
 Style: CTA,Inter ExtraBold,60,&H00FFFFFF,&H00FFFFFF,&H00346B1F,&H00346B1F,0,0,0,0,100,100,0,0,3,26,0,5,0,0,0,1
 Style: Num,Inter ExtraBold,72,&H000F6BF2,&H000F6BF2,&H70000000,&H90000000,0,0,0,0,100,100,0,0,1,3,4,5,0,0,0,1
 Style: Nombre,Inter ExtraBold,64,&H00FFFFFF,&H00FFFFFF,&H000F6BF2,&H000F6BF2,0,0,0,0,100,100,0,0,3,16,0,7,0,0,0,1
@@ -107,10 +107,11 @@ ins += ['-i', logo, '-loop', '1', '-t', str(PLACA), '-framerate', '30', '-i', pl
 nlogo, nplaca = len(clips) + 1, len(clips) + 2
 z = zexpr()
 f = [f"[0:v]fps=30,scale=w='trunc(1080*({z})/2)*2':h='trunc(1920*({z})/2)*2':eval=frame:flags=lanczos,crop=1080:1920:x='(iw-1080)*0.47':y='(ih-1920)*0.30',setsar=1[b0]"]
-for k, (path, a, b) in enumerate(clips, 1):
-    cd = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', path]))
+for k, (path, a, b, *ini) in enumerate(clips, 1):
+    ini = ini[0] if ini else 0
+    cd = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', path])) - ini
     span = b - a; fac = min(1.8, max(0.8, span / cd))
-    f.append(f"[{k}:v]fps=30,setpts=PTS*{fac:.4f},tpad=stop_mode=clone:stop_duration={max(0, span - cd * fac) + 0.5:.3f},trim=duration={span:.3f},setpts=PTS-STARTPTS+{a:.3f}/TB[c{k}]")
+    f.append(f"[{k}:v]fps=30,trim=start={ini},setpts=PTS-STARTPTS,setpts=PTS*{fac:.4f},tpad=stop_mode=clone:stop_duration={max(0, span - cd * fac) + 0.5:.3f},trim=duration={span:.3f},setpts=PTS-STARTPTS+{a:.3f}/TB[c{k}]")
     f.append(f"[b{k - 1}][c{k}]overlay=enable='between(t,{a:.3f},{b:.3f})':eof_action=pass[b{k}]")
 n = len(clips)
 f.append(f"[b{n}]subtitles='{assf}'[s]")
@@ -120,7 +121,7 @@ f.append(f"[{nplaca}:v]scale=1080:1920,setsar=1,format=yuv420p,fade=t=in:st=0:d=
 f.append("[m][p]concat=n=2:v=1:a=0[v]")
 f.append(f"[0:a]highpass=f=80,{ln},aresample=48000,apad=pad_dur={PLACA},atrim=duration={DUR + PLACA:.3f}[a]")
 cmd = ['ffmpeg', '-v', 'error', '-stats', '-y'] + ins + ['-filter_complex', ';'.join(f), '-map', '[v]', '-map', '[a]',
-       '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-maxrate', '16M', '-bufsize', '32M', '-profile:v', 'high',
+       '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', '-maxrate', '20M', '-bufsize', '40M', '-profile:v', 'high',
        '-pix_fmt', 'yuv420p', '-r', '30', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', salida]
 subprocess.run(cmd, check=True)
 print('Listo:', salida)

@@ -32,8 +32,8 @@ const VIDEO = (() => {
       // contador
       const n = Math.round(lerp(0, 40, eOut(prog(t, 2.0, 1.3))));
       s += rotulo('cucaracha alemana', { y: 330, size: 46, t, t0: 0.3, color: C.orange });
-      s += texto([{ s: '≈' + n, fill: C.white }], { y: 590, size: 250, t, t0: 2.0 });
-      s += texto(['huevos por cápsula'], { y: 690, size: 74, t, t0: 2.3 });
+      s += texto([{ s: '≈' + n, fill: C.white }], { y: 590, size: 250, t, t0: 2.0, fijo: true });
+      s += texto(['huevos por cápsula'], { y: 690, size: 74, t, t0: 2.3, fijo: true });
       s += texto(['la hembra la carga hasta un día', 'antes de que nazcan'], { y: 1560, size: 50, weight: 700, t, t0: 4.0 });
       return s;
     },
