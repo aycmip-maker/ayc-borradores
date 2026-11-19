@@ -10,7 +10,7 @@
 
 | Palabras habladas | Duración a 125 ppm | Cuándo publicar |
 |---|---|---|
-| 200 | 1:36 | por definir |
+| 182 | 1:27 | por definir |
 
 ---
 
@@ -38,13 +38,13 @@
 
 **[Primer plano]**
 
-"Por eso un control efectivo no parte por el producto: parte por la inspección. Encontrar el refugio, saber qué especie es y medir con trampas cuántas hay. Recién ahí se trata, y se trata donde viven, no donde las ves."
+"Por eso un control efectivo no parte por el producto: parte por la inspección. Encontrar el refugio, saber qué especie es y medir con trampas cuántas hay. Recién ahí se trata, y se trata donde viven, no donde las ves, hasta la erradicación total."
 
 ### CIERRE — la consecuencia para el que mira, y la acción
 
 **[Directo a cámara, plano medio]**
 
-"Así que si ya intentaste erradicarlas y siguen ahí, no fue falta de constancia: nadie llegó al refugio. Nosotros no vendemos productos milagrosos. Hacemos un control efectivo: inspección, tratamiento en el refugio y erradicación total. Escríbenos por WhatsApp."
+"¿Has intentado erradicarlas y siguen ahí? Nosotros te podemos dar la solución real. Escríbenos por WhatsApp."
 
 ---
 
@@ -57,7 +57,7 @@ Cada bloque responde la pregunta que deja abierta el anterior:
 3. Sigue creciendo: ≈40 huevos por cápsula → *¿y si les echo aerosol?*
 4. El aerosol no llega al refugio y además las dispersa → *¿entonces cómo se controla?*
 5. Con método, no con un producto: inspección, refugio, especie, medición, y tratar donde viven → *¿y yo qué hago?*
-6. Cierre: no fue falta de constancia, nadie llegó al refugio; control efectivo con inspección y erradicación total; escríbenos.
+6. Cierre fijo de Francisco: ¿has intentado erradicarlas y siguen ahí?; solución real; escríbenos.
 
 El gancho era el dato que en el video animado estaba enterrado en la cuarta escena. No se nombra ningún producto: lo que se ofrece es el método. Tampoco se mencionan garantía, precio ni plan.
 
@@ -80,9 +80,9 @@ Tiempos estimados a 125 ppm; se ajustan a tu voz real.
 | 0:44–0:49 | "Mata a las que alcanza, no a las que están en el refugio." | Tú a cámara | **no a las del refugio** | — |
 | 0:49–0:59 | "Y muchos son repelentes… a otras zonas de la casa." | Clip `aerosol` (plano de la casa, la colonia se dispersa) | **repelentes** · **la dispersan** | fuente del dato |
 | 0:59–1:04 | "Por eso un control efectivo no parte por el producto: parte por la inspección." | Tú a cámara, zoom in 108% | **parte por la inspección** | — |
-| 1:04–1:16 | "Encontrar el refugio, saber qué especie es y medir con trampas cuántas hay. Recién ahí se trata, y se trata donde viven, no donde las ves." | Clip nuevo `inspeccion` (por crear): linterna que encuentra el refugio, trampa de monitoreo con el conteo, tratamiento dentro del refugio | **el refugio** · **trampas** · **donde viven** | fuente del monitoreo |
-| 1:16–1:23 | "Así que si ya intentaste erradicarlas y siguen ahí, no fue falta de constancia: nadie llegó al refugio." | Tú a cámara, zoom in lento | **siguen ahí** · **nadie llegó al refugio** | — |
-| 1:23–1:35 | "Nosotros no vendemos productos milagrosos. Hacemos un control efectivo: inspección, tratamiento en el refugio y erradicación total. Escríbenos por WhatsApp." | Tú a cámara; aparecen los tres pasos como rótulos (inspección · tratamiento · erradicación) y luego la tarjeta con WhatsApp y web | **control efectivo** · **erradicación total** · **WhatsApp** | — |
+| 1:04–1:18 | "Encontrar el refugio, saber qué especie es y medir con trampas cuántas hay. Recién ahí se trata, y se trata donde viven, no donde las ves, hasta la erradicación total." | Clip nuevo `inspeccion` (por crear): linterna que encuentra el refugio, trampa de monitoreo con el conteo, tratamiento dentro del refugio | **el refugio** · **trampas** · **erradicación total** | fuente del monitoreo |
+| 1:18–1:22 | "¿Has intentado erradicarlas y siguen ahí?" | Tú a cámara, zoom in lento | **siguen ahí** | — |
+| 1:22–1:27 | "Nosotros te podemos dar la solución real. Escríbenos por WhatsApp." | Tú a cámara; entra la tarjeta con WhatsApp y web | **solución real** · **WhatsApp** | — |
 | +3 s | — | Placa final: logo, +56 9 8154 4036, www.aycmip.cl | — | — |
 
 **Tratamiento general**
@@ -134,7 +134,6 @@ Mándanos una foto y te decimos qué es.
 | "medir con trampas cuántas hay" | "Antes de aplicar, ponemos trampas para saber cuántas hay." · "Monitoreo previo con trampas: medimos el nivel de infestación antes de aplicar." |
 | "saber qué especie es" | "Cada especie entra por un lugar distinto." |
 | "se trata donde viven" · "tratamiento en el refugio" | "Aplicamos… en los refugios." · "En grietas, electrodomésticos y nidos." |
-| "no fue falta de constancia" | "El problema no fue tu constancia." |
 
 ### Lo que no es cita
 
@@ -142,15 +141,16 @@ Mándanos una foto y te decimos qué es.
 - "Por eso lo que ves en el mesón…": la landing pone el dato de las ninfas y esa frase una al lado de la otra, sin el "por eso". El nexo causal es inferencia mía.
 - "Ahí es donde falla el aerosol": frase de enlace; lo que la landing afirma son las dos razones que siguen.
 - "Cada hembra": la landing dice "la hembra de cucaracha alemana".
-- "un control efectivo no parte por el producto: parte por la inspección", "nadie llegó al refugio" y "no vendemos productos milagrosos": criterio profesional de Francisco (pedido del 19-nov-2026), redactado por mí.
+- "un control efectivo no parte por el producto: parte por la inspección": criterio profesional de Francisco (pedido del 19-nov-2026), redactado por mí.
 - **"erradicación total"**: es la promesa que pidió Francisco. La landing dice "la colonia eliminada, no desplazada a otra pieza"; "total" es más fuerte que eso.
 - "Encontrar el refugio": deducido de que el tratamiento se aplica en los refugios.
-- "Escríbenos por WhatsApp" es propuesta mía.
+- El cierre es el que fijó Francisco; "Escríbenos por WhatsApp" es la llamada a la acción.
 
 ### Cambios pedidos por Francisco (19-nov-2026)
 
 - Fuera el gel: el reel no nombra productos. En su lugar va el método de control: inspección, refugio, especie, medición con trampas y tratamiento donde viven.
-- Fuera "fue el tipo de producto" del cierre: ahora el cierre ofrece control efectivo con inspección y erradicación total, no un producto.
+- El cierre es fijo y no se toca: "¿Has intentado erradicarlas y siguen ahí? Nosotros te podemos dar la solución real. Escríbenos por WhatsApp." (Lo había reescrito por mi cuenta; se restituyó.)
+- A&C no vende productos: ninguna frase del reel habla de vender productos, ni para afirmarlo ni para negarlo. "Inspección" y "erradicación total" van en el desarrollo.
 
 ### Pendientes
 
