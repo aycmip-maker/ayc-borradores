@@ -41,3 +41,19 @@ Si pide un guion basado en otro video, usa los datos e imágenes como referencia
 ## Al editar un guion
 
 Cambia solo lo que pidió. Lo demás queda igual, palabra por palabra.
+
+## Edición de reels grabados por Francisco
+
+Reglas que salieron de la primera edición (19-nov-2026), en la que el audio quedó degradado y los subtítulos desfasados:
+
+- **Audio: no procesar la voz.** Solo una ganancia fija que deje el pico real en −1,5 dBTP. Nada de `loudnorm` dinámico, compresor, limitador ni filtros: eso fue lo que bajó la calidad. Verificar comparando contra el original (correlación ≈ 1).
+- **Subtítulos: alineación real, nunca estimada.** `videos/reel/alinear_ctc.py` ubica cada palabra en el audio con el modelo de español de torchaudio y muestra lo que el modelo oye. Francisco improvisa sobre el guion: los subtítulos llevan lo que dijo, no lo que estaba escrito.
+- **Efectos de sonido:** suaves y por debajo de la voz (−24 dB o menos), con el banco de `earshot` (`earshot sfx render`).
+- `videos/reel/editar.py` hace la edición completa: clips, zoom, subtítulos, logo, placa final.
+
+Herramientas y cómo quedan disponibles en una sesión nueva:
+
+- Modelo de alineación: `pip install torch torchaudio`; el modelo se baja de `download.pytorch.org` (permitido en el entorno `ayc-borradores`).
+- earshot: `pip install git+https://github.com/Leonxlnx/earshot` (el banco de sonidos no necesita modelos ni red).
+- real-sfx (github.com/Clipwing/skills): pone grabaciones reales de una biblioteca propia de sonidos; A&C no tiene una todavía.
+- mcp-openverse (github.com/neno-is-ooo/mcp-openverse): busca imágenes con licencia abierta en `api.openverse.org`; descargar la imagen exige permitir además el sitio donde está alojada.

@@ -45,7 +45,7 @@ def zexpr():
 
 # --- subtítulos
 CLAVES = ['nocturna', 'a plena luz', 'ya no caben', 'dónde', 'refugio', 'último tercio', 'no es toda', 'sigue creciendo',
-          'cuarenta huevos', 'falla el aerosol', 'en el refugio', 'repelentes', 'la dispersan', 'la inspección', 'trampas',
+          'cuarenta huevos', 'fallan los aerosoles', 'en el refugio', 'repelentes', 'la dispersan', 'la inspección', 'trampas',
           'erradicación total', 'siguen ahí', 'solución real', 'WhatsApp', 'Francisco Aracena', 'de verdad']
 norm = lambda w: re.sub(r'[^\wáéíóúüñ]', '', w.lower())
 def marcar(ws):  # índices de palabras que forman una frase clave
@@ -67,7 +67,9 @@ for i, o in enumerate(O):
     if len(trozos) > 1 and len(trozos[-1]) == 1:  # no dejar una palabra sola al final
         trozos[-2] += trozos.pop()
     for j, tr in enumerate(trozos):
-        a = ps[tr[0]]['a']; b = ps[trozos[j + 1][0]]['a'] if j + 1 < len(trozos) else o['b'] + 0.15
+        a = ps[tr[0]]['a']; fin = ps[tr[-1]]['b']
+        b = ps[trozos[j + 1][0]]['a'] if j + 1 < len(trozos) else fin + 0.25
+        if b - fin > 0.5: b = fin + 0.25
         txt = ' '.join((r'{\c&H0F6BF2&}' + ws[k] + r'{\c&HFFFFFF&}') if k in m else ws[k] for k in tr)
         ev.append(f"Dialogue: 0,{ts(a - 0.04)},{ts(b)},Sub,,0,0,0,,{{\\fscx82\\fscy82\\t(0,120,\\fscx100\\fscy100)}}{txt}")
 # llamada de WhatsApp y nombre en la firma
@@ -94,16 +96,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """ + '\n'.join(ev) + '\n'
 assf = os.path.splitext(salida)[0] + '.ass'; open(assf, 'w', encoding='utf-8').write(ass)
 
-# --- audio: medir y normalizar a -14 LUFS
-med = subprocess.run(['ffmpeg', '-hide_banner', '-i', orig, '-af', 'highpass=f=80,loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr
+# --- audio: la voz original con una ganancia fija, sin compresor, limitador ni filtros.
+# Se sube hasta dejar el pico real en -1,5 dBTP; así no cambia el timbre ni se levanta el ruido de fondo.
+med = subprocess.run(['ffmpeg', '-hide_banner', '-i', orig, '-af', 'loudnorm=print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr
 j = json.loads(med[med.rindex('{'):med.rindex('}') + 1])
-ln = (f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}"
-      f":measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true")
-
+GAN = round(-1.5 - float(j['input_tp']), 2)
+SFX = os.path.dirname(os.path.abspath(__file__)) + '/sfx/'
 # --- grafo de video
 ins = ['-i', orig]
 for c in clips: ins += ['-i', c[0]]
-ins += ['-i', logo, '-loop', '1', '-t', str(PLACA), '-framerate', '30', '-i', placa]
+ins += ['-i', logo, '-loop', '1', '-t', str(PLACA), '-framerate', '30', '-i', placa, '-i', SFX + 'swish.wav', '-i', SFX + 'pop.wav']
 nlogo, nplaca = len(clips) + 1, len(clips) + 2
 z = zexpr()
 f = [f"[0:v]fps=30,scale=w='trunc(1080*({z})/2)*2':h='trunc(1920*({z})/2)*2':eval=frame:flags=lanczos,crop=1080:1920:x='(iw-1080)*0.47':y='(ih-1920)*0.30',setsar=1[b0]"]
@@ -119,10 +121,16 @@ f.append(f"[{nlogo}:v]scale=230:-1,format=rgba,colorchannelmixer=aa=0.30[lg]")
 f.append("[s][lg]overlay=x=W-w-50:y=300,format=yuv420p,trim=duration=" + f"{DUR:.3f}" + ",setpts=PTS-STARTPTS[m]")
 f.append(f"[{nplaca}:v]scale=1080:1920,setsar=1,format=yuv420p,fade=t=in:st=0:d=0.3[p]")
 f.append("[m][p]concat=n=2:v=1:a=0[v]")
-f.append(f"[0:a]highpass=f=80,{ln},aresample=48000,apad=pad_dur={PLACA},atrim=duration={DUR + PLACA:.3f}[a]")
+nsw, npop = len(clips) + 3, len(clips) + 4
+golpes = [(nsw, c[1] - 0.11, -27) for c in clips] + [(nsw, c[2] - 0.11, -30) for c in clips] + [(npop, O[17]['a'] - 0.1, -24), (nsw, DUR - 0.11, -27)]
+nombres = []
+for q, (n_in, t0, db) in enumerate(golpes):
+    f.append(f"[{n_in}:a]aresample=44100,aformat=channel_layouts=stereo,volume={db}dB,adelay={max(0, t0) * 1000:.0f}:all=1[g{q}]"); nombres.append(f"[g{q}]")
+f.append(f"[0:a]aformat=channel_layouts=stereo,volume={GAN}dB,apad=pad_dur={PLACA}[voz]")
+f.append(f"[voz]{''.join(nombres)}amix=inputs={len(golpes) + 1}:normalize=0:duration=first,atrim=duration={DUR + PLACA:.3f}[a]")
 cmd = ['ffmpeg', '-v', 'error', '-stats', '-y'] + ins + ['-filter_complex', ';'.join(f), '-map', '[v]', '-map', '[a]',
        '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', '-maxrate', '20M', '-bufsize', '40M', '-profile:v', 'high',
-       '-pix_fmt', 'yuv420p', '-r', '30', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', salida]
+       '-pix_fmt', 'yuv420p', '-r', '30', '-c:a', 'aac', '-b:a', '256k', '-ar', '44100', '-movflags', '+faststart', salida]
 subprocess.run(cmd, check=True)
-print('Listo:', salida)
+print('Listo:', salida, '| ganancia de voz', GAN, 'dB')
 for c in clips: print(f"  clip {os.path.basename(c[0])}: {c[1]:.2f}–{c[2]:.2f}")
